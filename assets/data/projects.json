@@ -1,0 +1,192 @@
+{
+  "projects": [
+    {
+      "id": "shopsphere",
+      "title": "ShopSphere",
+      "category": { "en": "E-commerce", "fr": "E-commerce", "ar": "تجارة إلكترونية" },
+      "summary": {
+        "en": "A multi-vendor marketplace app with real-time inventory, one-tap checkout and personalized recommendations.",
+        "fr": "Une marketplace multi-vendeurs avec inventaire en temps réel, paiement en un geste et recommandations personnalisées.",
+        "ar": "تطبيق سوق متعدد البائعين مع مخزون لحظي ودفع بلمسة واحدة وتوصيات مخصصة."
+      },
+      "role": { "en": "Lead Flutter Developer", "fr": "Développeur Flutter principal", "ar": "مطوّر Flutter رئيسي" },
+      "year": 2025,
+      "platforms": ["android", "ios", "web"],
+      "featured": true,
+      "accentColor": "#6C5CE7",
+      "icon": "shopping",
+      "thumbnail": null,
+      "banner": null,
+      "screenshots": [],
+      "tags": ["Flutter", "GetX", "Firebase", "Stripe"],
+      "problem": {
+        "en": "The client ran three separate native apps and a web shop, each with its own bugs and release cycle. Feature parity lagged by months and cart abandonment on mobile sat above 70%.",
+        "fr": "Le client maintenait trois applications natives et une boutique web, chacune avec ses propres bugs et son cycle de publication. La parité fonctionnelle accusait des mois de retard et l'abandon de panier sur mobile dépassait 70 %.",
+        "ar": "كان العميل يدير ثلاثة تطبيقات أصلية منفصلة ومتجرًا على الويب، لكل منها أخطاؤه ودورة إصداره. تأخر تكافؤ الميزات لأشهر وتجاوز معدل التخلي عن السلة على الجوال 70٪."
+      },
+      "architecture": {
+        "en": "A single Flutter codebase using a feature-first Clean Architecture: GetX controllers in the presentation layer, use-cases in the domain layer, and repositories backed by Firestore and a REST catalog API. Offline carts are persisted locally and reconciled on reconnect.",
+        "fr": "Une seule base de code Flutter en Clean Architecture orientée fonctionnalités : contrôleurs GetX en présentation, cas d'usage dans le domaine et repositories s'appuyant sur Firestore et une API REST de catalogue. Les paniers hors ligne sont stockés localement et réconciliés à la reconnexion.",
+        "ar": "قاعدة شيفرة Flutter واحدة ببنية نظيفة مقسّمة حسب الميزات: وحدات تحكم GetX في طبقة العرض، وحالات الاستخدام في طبقة المجال، ومستودعات تعتمد على Firestore وواجهة REST للكتالوج. تُحفظ السلال محليًا دون اتصال وتُزامَن عند عودة الشبكة."
+      },
+      "features": [
+        { "en": "One-tap checkout with Apple Pay, Google Pay and Stripe", "fr": "Paiement en un geste avec Apple Pay, Google Pay et Stripe", "ar": "دفع بلمسة واحدة عبر Apple Pay و Google Pay و Stripe" },
+        { "en": "Real-time stock updates and price-drop notifications", "fr": "Stock en temps réel et alertes de baisse de prix", "ar": "تحديثات مخزون لحظية وتنبيهات بانخفاض الأسعار" },
+        { "en": "Personalized home feed driven by browsing history", "fr": "Fil d'accueil personnalisé selon l'historique de navigation", "ar": "صفحة رئيسية مخصصة وفق سجل التصفح" },
+        { "en": "Full RTL support and 6 languages", "fr": "Support RTL complet et 6 langues", "ar": "دعم كامل للكتابة من اليمين إلى اليسار و6 لغات" }
+      ],
+      "stack": {
+        "frameworks": ["Flutter", "Dart", "Kotlin", "Swift"],
+        "libraries": ["GetX", "Dio", "flutter_stripe", "cached_network_image", "hive"],
+        "tools": ["Firebase Auth", "Cloud Firestore", "FCM", "Algolia", "Codemagic"]
+      },
+      "links": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.example.shopsphere",
+        "appStore": "https://apps.apple.com/app/id000000000",
+        "webDemo": "https://shopsphere.example.com",
+        "github": null
+      }
+    },
+    {
+      "id": "pulsefit",
+      "title": "PulseFit",
+      "category": { "en": "Health & Fitness", "fr": "Santé & Fitness", "ar": "الصحة واللياقة" },
+      "summary": {
+        "en": "A workout companion that syncs with HealthKit, Google Fit and BLE heart-rate straps to coach users in real time.",
+        "fr": "Un coach sportif qui se synchronise avec HealthKit, Google Fit et les ceintures cardio BLE pour guider en temps réel.",
+        "ar": "رفيق تمارين يتزامن مع HealthKit و Google Fit وأحزمة نبض القلب عبر BLE لتدريب المستخدمين لحظيًا."
+      },
+      "role": { "en": "Mobile Engineer", "fr": "Ingénieur mobile", "ar": "مهندس تطبيقات جوّال" },
+      "year": 2024,
+      "platforms": ["android", "ios"],
+      "featured": true,
+      "accentColor": "#FF6B6B",
+      "icon": "fitness",
+      "thumbnail": null,
+      "banner": null,
+      "screenshots": [],
+      "tags": ["Flutter", "BLoC", "Kotlin", "Swift", "BLE"],
+      "problem": {
+        "en": "Users wanted live coaching during workouts, but existing apps only showed data after the session. Reading sensor data reliably in the background on both platforms was the core challenge.",
+        "fr": "Les utilisateurs voulaient un coaching en direct pendant l'effort, alors que les applications existantes n'affichaient les données qu'après la séance. Lire les capteurs de façon fiable en arrière-plan sur les deux plateformes était le défi principal.",
+        "ar": "أراد المستخدمون تدريبًا مباشرًا أثناء التمرين، بينما كانت التطبيقات الحالية تعرض البيانات بعد الجلسة فقط. وكان التحدي الأساسي قراءة بيانات المستشعرات بموثوقية في الخلفية على المنصتين."
+      },
+      "architecture": {
+        "en": "BLoC-based presentation layer on top of a platform-agnostic sensor interface. Native Kotlin and Swift modules, exposed via Pigeon-generated channels, handle BLE scanning, foreground services and HealthKit permissions.",
+        "fr": "Une couche de présentation BLoC au-dessus d'une interface capteurs indépendante de la plateforme. Des modules natifs Kotlin et Swift, exposés via des canaux générés par Pigeon, gèrent le scan BLE, les services au premier plan et les permissions HealthKit.",
+        "ar": "طبقة عرض مبنية على BLoC فوق واجهة مستشعرات مستقلة عن المنصة. وحدات أصلية بلغتي Kotlin و Swift، تُعرض عبر قنوات مولّدة بـ Pigeon، تتولى فحص BLE وخدمات الواجهة الأمامية وأذونات HealthKit."
+      },
+      "features": [
+        { "en": "Live heart-rate zones with voice coaching", "fr": "Zones cardiaques en direct avec coaching vocal", "ar": "مناطق نبض القلب مباشرة مع توجيه صوتي" },
+        { "en": "Background workout tracking with foreground service", "fr": "Suivi en arrière-plan via un service au premier plan", "ar": "تتبع التمارين في الخلفية عبر خدمة أمامية" },
+        { "en": "Two-way sync with HealthKit and Google Fit", "fr": "Synchronisation bidirectionnelle avec HealthKit et Google Fit", "ar": "مزامنة ثنائية الاتجاه مع HealthKit و Google Fit" },
+        { "en": "Animated progress charts and weekly insights", "fr": "Graphiques de progression animés et bilans hebdomadaires", "ar": "رسوم بيانية متحركة للتقدم وملخصات أسبوعية" }
+      ],
+      "stack": {
+        "frameworks": ["Flutter", "Dart", "Kotlin", "Swift"],
+        "libraries": ["flutter_bloc", "Pigeon", "flutter_blue_plus", "fl_chart", "drift"],
+        "tools": ["HealthKit", "Google Fit", "Firebase Crashlytics", "GitHub Actions", "Fastlane"]
+      },
+      "links": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.example.pulsefit",
+        "appStore": "https://apps.apple.com/app/id000000001",
+        "webDemo": null,
+        "github": "https://github.com/your-username/pulsefit"
+      }
+    },
+    {
+      "id": "ledgerly",
+      "title": "Ledgerly",
+      "category": { "en": "Fintech", "fr": "Fintech", "ar": "تقنية مالية" },
+      "summary": {
+        "en": "An offline-first personal finance manager for mobile and desktop with encrypted local storage and smart budgets.",
+        "fr": "Un gestionnaire de finances personnelles offline-first pour mobile et desktop, avec stockage local chiffré et budgets intelligents.",
+        "ar": "مدير مالي شخصي يعمل دون اتصال على الجوال وسطح المكتب، مع تخزين محلي مشفّر وميزانيات ذكية."
+      },
+      "role": { "en": "Solo Developer & Designer", "fr": "Développeur & designer indépendant", "ar": "مطوّر ومصمم مستقل" },
+      "year": 2024,
+      "platforms": ["android", "ios", "macos", "windows", "web"],
+      "featured": true,
+      "accentColor": "#00B894",
+      "icon": "finance",
+      "thumbnail": null,
+      "banner": null,
+      "screenshots": [],
+      "tags": ["Flutter", "Riverpod", "Isar", "Desktop"],
+      "problem": {
+        "en": "Privacy-conscious users did not want to link their bank accounts to cloud services, yet still expected sync between phone and laptop and fast search across years of transactions.",
+        "fr": "Les utilisateurs soucieux de leur vie privée refusaient de connecter leur banque à un service cloud, tout en attendant une synchronisation téléphone-ordinateur et une recherche rapide sur des années de transactions.",
+        "ar": "لم يرغب المستخدمون المهتمون بالخصوصية في ربط حساباتهم المصرفية بخدمات سحابية، لكنهم توقعوا مزامنة بين الهاتف والحاسوب وبحثًا سريعًا في معاملات سنوات."
+      },
+      "architecture": {
+        "en": "Riverpod for dependency injection and state, with an encrypted Isar database as the single source of truth. Peer-to-peer sync uses end-to-end encrypted snapshots over the local network, so data never leaves the user's devices.",
+        "fr": "Riverpod pour l'injection de dépendances et l'état, avec une base Isar chiffrée comme source de vérité unique. La synchronisation pair-à-pair échange des instantanés chiffrés de bout en bout sur le réseau local : les données ne quittent jamais les appareils.",
+        "ar": "Riverpod لحقن الاعتماديات وإدارة الحالة، مع قاعدة بيانات Isar مشفّرة كمصدر وحيد للحقيقة. تستخدم المزامنة من نظير إلى نظير لقطات مشفّرة طرفيًا عبر الشبكة المحلية، فلا تغادر البيانات أجهزة المستخدم أبدًا."
+      },
+      "features": [
+        { "en": "CSV / OFX import with automatic categorization", "fr": "Import CSV / OFX avec catégorisation automatique", "ar": "استيراد CSV / OFX مع تصنيف تلقائي" },
+        { "en": "Adaptive layouts with keyboard shortcuts on desktop", "fr": "Mises en page adaptatives et raccourcis clavier sur desktop", "ar": "تخطيطات متكيّفة واختصارات لوحة المفاتيح على سطح المكتب" },
+        { "en": "Biometric lock and AES-256 encrypted storage", "fr": "Verrouillage biométrique et stockage chiffré AES-256", "ar": "قفل بيومتري وتخزين مشفّر بمعيار AES-256" },
+        { "en": "Encrypted peer-to-peer device sync", "fr": "Synchronisation pair-à-pair chiffrée entre appareils", "ar": "مزامنة مشفّرة بين الأجهزة من نظير إلى نظير" }
+      ],
+      "stack": {
+        "frameworks": ["Flutter", "Dart"],
+        "libraries": ["flutter_riverpod", "isar", "local_auth", "freezed", "go_router"],
+        "tools": ["GitHub Actions", "MSIX", "Sentry"]
+      },
+      "links": {
+        "playStore": null,
+        "appStore": null,
+        "webDemo": "https://ledgerly.example.com",
+        "github": "https://github.com/your-username/ledgerly"
+      }
+    },
+    {
+      "id": "relay",
+      "title": "Relay",
+      "category": { "en": "Communication", "fr": "Communication", "ar": "تواصل" },
+      "summary": {
+        "en": "A real-time team chat with threads, voice notes and end-to-end encryption, built on WebSockets.",
+        "fr": "Une messagerie d'équipe temps réel avec fils, notes vocales et chiffrement de bout en bout, basée sur WebSockets.",
+        "ar": "دردشة فريق لحظية مع سلاسل رسائل وملاحظات صوتية وتشفير طرفي، مبنية على WebSockets."
+      },
+      "role": { "en": "Flutter Developer", "fr": "Développeur Flutter", "ar": "مطوّر Flutter" },
+      "year": 2023,
+      "platforms": ["android", "ios", "web"],
+      "featured": true,
+      "accentColor": "#0984E3",
+      "icon": "chat",
+      "thumbnail": null,
+      "banner": null,
+      "screenshots": [],
+      "tags": ["Flutter", "GetX", "WebSockets", "E2EE"],
+      "problem": {
+        "en": "A remote-first company needed a self-hosted alternative to commercial chat tools that met strict compliance rules and still felt as smooth as consumer messengers.",
+        "fr": "Une entreprise en télétravail avait besoin d'une alternative auto-hébergée aux messageries commerciales, conforme à des règles strictes tout en restant aussi fluide qu'une messagerie grand public.",
+        "ar": "احتاجت شركة تعمل عن بُعد إلى بديل مستضاف ذاتيًا لأدوات الدردشة التجارية يلتزم بقواعد امتثال صارمة ويبقى سلسًا كتطبيقات المراسلة الشائعة."
+      },
+      "architecture": {
+        "en": "GetX modules per feature with a persistent WebSocket service, optimistic UI updates and a local message cache. Messages are encrypted client-side with the Signal protocol before leaving the device.",
+        "fr": "Des modules GetX par fonctionnalité avec un service WebSocket persistant, des mises à jour optimistes de l'UI et un cache local des messages. Les messages sont chiffrés côté client avec le protocole Signal avant de quitter l'appareil.",
+        "ar": "وحدات GetX لكل ميزة مع خدمة WebSocket دائمة وتحديثات متفائلة للواجهة وذاكرة تخزين محلية للرسائل. تُشفَّر الرسائل على جهاز العميل ببروتوكول Signal قبل مغادرته."
+      },
+      "features": [
+        { "en": "Threads, reactions and typing indicators", "fr": "Fils de discussion, réactions et indicateurs de saisie", "ar": "سلاسل رسائل وتفاعلات ومؤشرات الكتابة" },
+        { "en": "Voice notes with waveform previews", "fr": "Notes vocales avec aperçu de la forme d'onde", "ar": "ملاحظات صوتية مع معاينة الموجة" },
+        { "en": "End-to-end encryption with key verification", "fr": "Chiffrement de bout en bout avec vérification des clés", "ar": "تشفير طرفي مع التحقق من المفاتيح" },
+        { "en": "Push notifications with inline replies", "fr": "Notifications push avec réponse directe", "ar": "إشعارات فورية مع الرد المباشر" }
+      ],
+      "stack": {
+        "frameworks": ["Flutter", "Dart", "Node.js"],
+        "libraries": ["GetX", "web_socket_channel", "libsignal", "just_audio", "sqflite"],
+        "tools": ["Docker", "Redis", "FCM / APNs", "Codemagic"]
+      },
+      "links": {
+        "playStore": null,
+        "appStore": null,
+        "webDemo": null,
+        "github": "https://github.com/your-username/relay"
+      }
+    }
+  ]
+}
