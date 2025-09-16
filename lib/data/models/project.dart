@@ -23,6 +23,7 @@ import 'localized_text.dart';
 /// | thumbnail      | string?               | card image, 16:10 (asset or https URL)  |
 /// | banner         | string?               | wide detail header; falls back to thumbnail |
 /// | screenshots    | string[]              | portrait phone shots (assets or URLs)   |
+/// | screenshotsFramed | bool               | true if shots already include a device frame |
 /// | tags           | string[]              | 3–5 key technologies for the card       |
 /// | problem        | LocalizedText         | detail page write-up                    |
 /// | architecture   | LocalizedText         | detail page write-up                    |
@@ -44,6 +45,7 @@ class Project {
     required this.thumbnail,
     required this.banner,
     required this.screenshots,
+    this.screenshotsFramed = false,
     required this.tags,
     required this.problem,
     required this.architecture,
@@ -65,6 +67,11 @@ class Project {
   final String? thumbnail;
   final String? banner;
   final List<String> screenshots;
+
+  /// `true` when screenshots are finished device mockups (phone frame already
+  /// drawn, transparent background). The gallery then shows them whole instead
+  /// of cropping them into its own phone frame.
+  final bool screenshotsFramed;
 
   /// Image for the detail page header: the landscape [banner] if provided,
   /// otherwise the card [thumbnail].
@@ -91,6 +98,7 @@ class Project {
     'education': Icons.school_rounded,
     'music': Icons.headphones_rounded,
     'dashboard': Icons.dashboard_rounded,
+    'gift': Icons.card_giftcard_rounded,
   };
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -117,6 +125,7 @@ class Project {
       thumbnail: path('thumbnail'),
       banner: path('banner'),
       screenshots: strings(json['screenshots']),
+      screenshotsFramed: json['screenshotsFramed'] as bool? ?? false,
       tags: strings(json['tags']),
       problem: LocalizedText.fromJson(json['problem']),
       architecture: LocalizedText.fromJson(json['architecture']),
