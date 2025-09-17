@@ -32,6 +32,12 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
   PageController? _controller;
   int _index = 0;
 
+  /// Real mockups keep their own frame; placeholders always get ours.
+  bool get _framed =>
+      widget.project.screenshotsFramed && widget.project.screenshots.isNotEmpty;
+
+  double get _aspect => _framed ? _framedAspect : _phoneAspect;
+
   List<String?> get _items => widget.project.screenshots.isEmpty
       ? List.filled(ScreenshotGallery._placeholderCount, null)
       : widget.project.screenshots;
@@ -69,7 +75,7 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
   @override
   Widget build(BuildContext context) {
     final height = context.responsive<double>(440, tablet: 500, desktop: 560);
-    final itemWidth = height * 9 / 19.5 + AppSpacing.lg;
+    final itemWidth = height * _aspect + AppSpacing.lg;
     final items = _items;
 
     return Column(
@@ -99,6 +105,7 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
                         controller: controller,
                         index: i,
                         child: _PhoneFrame(
+                          framed: _framed,
                           onTap: () => _openViewer(context, i),
                           child: _shot(items[i], i),
                         ),
@@ -143,6 +150,7 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
 
   Widget _shot(String? path, int i) => ProjectImage(
     path: path,
+    fit: _framed ? BoxFit.contain : BoxFit.cover,
     accent: widget.project.accentColor,
     variant: PlaceholderVariant.screenshot,
   );
@@ -152,6 +160,7 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
       _FullscreenViewer(
         count: _items.length,
         initialIndex: initial,
+        framed: _framed,
         builder: (i) => _shot(_items[i], i),
       ),
       barrierColor: Colors.black87,
@@ -194,40 +203,56 @@ class _ScaledPage extends StatelessWidget {
   }
 }
 
+/// Screen ratio of a modern phone (placeholders and raw screenshots).
+const _phoneAspect = 9 / 19.5;
+
+/// Slot ratio for pre-framed mockups (device + bezel is a bit wider). Images
+/// are fitted inside with `BoxFit.contain`, so the exact ratio doesn't matter.
+const _framedAspect = 0.5;
+
 class _PhoneFrame extends StatelessWidget {
-  const _PhoneFrame({required this.child, required this.onTap});
+  const _PhoneFrame({
+    required this.child,
+    required this.onTap,
+    this.framed = false,
+  });
 
   final Widget child;
   final VoidCallback onTap;
+
+  /// When true the image already contains a device frame: draw it as-is.
+  final bool framed;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AspectRatio(
-        aspectRatio: 9 / 19.5,
+        aspectRatio: framed ? _framedAspect : _phoneAspect,
         child: MouseRegion(
           cursor: SystemMouseCursors.zoomIn,
           child: GestureDetector(
             onTap: onTap,
-            child: Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: context.colors.surface,
-                borderRadius: BorderRadius.circular(AppRadii.xl),
-                border: Border.all(
-                  color: context.isDark ? Colors.white24 : Colors.black12,
-                  width: 6,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: context.palette.glow,
-                    blurRadius: 30,
-                    offset: const Offset(0, 16),
+            child: framed
+                ? child
+                : Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      color: context.colors.surface,
+                      borderRadius: BorderRadius.circular(AppRadii.xl),
+                      border: Border.all(
+                        color: context.isDark ? Colors.white24 : Colors.black12,
+                        width: 6,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: context.palette.glow,
+                          blurRadius: 30,
+                          offset: const Offset(0, 16),
+                        ),
+                      ],
+                    ),
+                    child: child,
                   ),
-                ],
-              ),
-              child: child,
-            ),
           ),
         ),
       ),
@@ -306,10 +331,12 @@ class _FullscreenViewer extends StatefulWidget {
     required this.count,
     required this.initialIndex,
     required this.builder,
+    this.framed = false,
   });
 
   final int count;
   final int initialIndex;
+  final bool framed;
   final Widget Function(int index) builder;
 
   @override
@@ -367,11 +394,15 @@ class _FullscreenViewerState extends State<_FullscreenViewer> {
                       child: Padding(
                         padding: const EdgeInsets.all(AppSpacing.xxl),
                         child: AspectRatio(
-                          aspectRatio: 9 / 19.5,
-                          child: ClipRRect(
-                            borderRadius: AppRadii.xlAll,
-                            child: widget.builder(i),
-                          ),
+                          aspectRatio: widget.framed
+                              ? _framedAspect
+                              : _phoneAspect,
+                          child: widget.framed
+                              ? widget.builder(i)
+                              : ClipRRect(
+                                  borderRadius: AppRadii.xlAll,
+                                  child: widget.builder(i),
+                                ),
                         ),
                       ),
                     ),
