@@ -70,4 +70,5 @@ flutter:
     - assets/images/projects/
     # Asset folders are NOT recursive: add one line per project folder, e.g.
     # - assets/images/projects/shopsphere/
+    - assets/images/projects/easy-gifte/
     - assets/cv/
