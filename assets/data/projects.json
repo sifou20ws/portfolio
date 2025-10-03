@@ -1,6 +1,125 @@
 {
   "projects": [
     {
+      "id": "easy-gifte",
+      "title": "Easy-Gifte",
+      "category": {
+        "en": "Fintech · Corporate gifting",
+        "fr": "Fintech · Cadeaux d'entreprise",
+        "ar": "تقنية مالية · هدايا الشركات"
+      },
+      "summary": {
+        "en": "A corporate gifting and voucher platform that connects companies, employees and partner stores: companies issue digital vouchers, employees spend them in-store with a QR code, and cashiers validate each purchase from their phone.",
+        "fr": "Une plateforme de cadeaux d'entreprise et de bons d'achat qui relie entreprises, employés et magasins partenaires : l'entreprise émet des bons numériques, l'employé les dépense en magasin avec un QR code et le caissier valide chaque achat depuis son téléphone.",
+        "ar": "منصة لهدايا الشركات وقسائم الشراء تربط الشركات والموظفين والمتاجر الشريكة: تُصدر الشركة قسائم رقمية، ويستخدمها الموظف في المتجر عبر رمز QR، ويتحقق أمين الصندوق من كل عملية شراء من هاتفه."
+      },
+      "year": 2024,
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "featured": true,
+      "accentColor": "#DB2777",
+      "icon": "gift",
+      "thumbnail": "assets/images/projects/easy-gifte/thumbnail.jpg",
+      "banner": "assets/images/projects/easy-gifte/banner.jpg",
+      "screenshotsFramed": true,
+      "screenshots": [
+        "assets/images/projects/easy-gifte/01-employee-home.png",
+        "assets/images/projects/easy-gifte/02-store-directory.png",
+        "assets/images/projects/easy-gifte/03-store-map.png",
+        "assets/images/projects/easy-gifte/04-profile-qr.png",
+        "assets/images/projects/easy-gifte/05-vouchers.png",
+        "assets/images/projects/easy-gifte/06-redemption-confirm.png",
+        "assets/images/projects/easy-gifte/07-merchant-home.png",
+        "assets/images/projects/easy-gifte/08-qr-scanner.png",
+        "assets/images/projects/easy-gifte/09-consumption-request.png",
+        "assets/images/projects/easy-gifte/10-transaction-history.png",
+        "assets/images/projects/easy-gifte/11-invoices.png",
+        "assets/images/projects/easy-gifte/12-cashier-management.png"
+      ],
+      "tags": [
+        "Flutter",
+        "GetX",
+        "Dio",
+        "FCM",
+        "REST API"
+      ],
+      "problem": {
+        "en": "Corporate gifting involves three parties that rarely share a system: the company paying for the benefit, the employee receiving it and the store redeeming it. Easy-Gifte brings them into one secure flow, so rewards reach employees instantly and every redemption is approved by both the employee and the cashier before any amount is deducted.",
+        "fr": "Les cadeaux d'entreprise impliquent trois acteurs qui partagent rarement un même système : l'entreprise qui finance l'avantage, l'employé qui le reçoit et le magasin qui l'encaisse. Easy-Gifte les réunit dans un parcours unique et sécurisé : les récompenses arrivent instantanément chez l'employé, et chaque utilisation est validée à la fois par l'employé et par le caissier avant tout débit.",
+        "ar": "تشمل هدايا الشركات ثلاثة أطراف نادرًا ما تتشارك نظامًا واحدًا: الشركة التي تموّل الميزة، والموظف الذي يتلقاها، والمتجر الذي يقبلها. يجمعهم Easy-Gifte في مسار واحد آمن، فتصل المكافآت إلى الموظفين فورًا، ويوافق الموظف وأمين الصندوق معًا على كل عملية استخدام قبل خصم أي مبلغ."
+      },
+      "architecture": {
+        "en": "Built with Flutter on a feature-first Clean Architecture: each feature module keeps its own presentation, business-logic and data layers, so new capabilities can be added without touching existing ones. GetX drives reactive state, routing and dependency injection. All networking goes through Dio, with custom interceptors for token-based authentication and centralised error handling against a REST API. Firebase Cloud Messaging delivers the real-time redemption confirmations, and the interface can switch language at runtime.",
+        "fr": "Développée avec Flutter selon une Clean Architecture orientée fonctionnalités : chaque module possède ses propres couches présentation, logique métier et données, ce qui permet d'ajouter de nouvelles capacités sans toucher à l'existant. GetX gère l'état réactif, la navigation et l'injection de dépendances. Tous les appels réseau passent par Dio, avec des intercepteurs personnalisés pour l'authentification par jeton et une gestion centralisée des erreurs face à une API REST. Firebase Cloud Messaging assure les confirmations d'utilisation en temps réel, et l'interface peut changer de langue à la volée.",
+        "ar": "طُوّر باستخدام Flutter وفق بنية نظيفة مقسّمة حسب الميزات: لكل وحدة طبقاتها الخاصة للعرض ومنطق الأعمال والبيانات، ما يتيح إضافة قدرات جديدة دون المساس بالموجود. يتولى GetX إدارة الحالة التفاعلية والتنقل وحقن الاعتماديات. تمر جميع طلبات الشبكة عبر Dio مع معترضات مخصصة للمصادقة بالرموز ومعالجة مركزية للأخطاء مع واجهة REST. ويؤمّن Firebase Cloud Messaging تأكيدات الاستخدام اللحظية، كما يمكن تغيير لغة الواجهة أثناء التشغيل."
+      },
+      "features": [
+        {
+          "en": "Company dashboard to manage employee accounts and issue digital gift vouchers, with automatic disbursement to targeted employees",
+          "fr": "Tableau de bord entreprise pour gérer les comptes employés et émettre des bons cadeaux numériques, avec distribution automatique aux employés ciblés",
+          "ar": "لوحة تحكم للشركة لإدارة حسابات الموظفين وإصدار قسائم هدايا رقمية مع توزيع تلقائي على الموظفين المستهدفين"
+        },
+        {
+          "en": "Employee wallet with secure sign-in and a live voucher balance",
+          "fr": "Portefeuille employé avec connexion sécurisée et solde des bons en temps réel",
+          "ar": "محفظة للموظف مع تسجيل دخول آمن ورصيد قسائم محدَّث لحظيًا"
+        },
+        {
+          "en": "Interactive directory and map of partner stores and outlets",
+          "fr": "Annuaire et carte interactifs des magasins et points de vente partenaires",
+          "ar": "دليل وخريطة تفاعليان للمتاجر ونقاط البيع الشريكة"
+        },
+        {
+          "en": "Dynamic QR code for in-store checkout and payment authorisation",
+          "fr": "QR code dynamique pour le passage en caisse et l'autorisation de paiement",
+          "ar": "رمز QR ديناميكي للدفع في المتجر والمصادقة على العملية"
+        },
+        {
+          "en": "Real-time push notification asking the employee to confirm each redemption",
+          "fr": "Notification push en temps réel demandant à l'employé de confirmer chaque utilisation",
+          "ar": "إشعار فوري يطلب من الموظف تأكيد كل عملية استخدام"
+        },
+        {
+          "en": "Cashier QR scanner that validates vouchers and deducts the purchase amount, with manual code entry as a fallback",
+          "fr": "Scanner QR pour le caissier qui valide les bons et débite le montant de l'achat, avec saisie manuelle du code en secours",
+          "ar": "ماسح QR لأمين الصندوق يتحقق من القسائم ويخصم مبلغ الشراء، مع إمكانية إدخال الرمز يدويًا كبديل"
+        },
+        {
+          "en": "Merchant portal to create and manage cashiers, the store profile and promotions",
+          "fr": "Portail marchand pour créer et gérer les caissiers, le profil du magasin et les promotions",
+          "ar": "بوابة للتاجر لإنشاء أمناء الصندوق وإدارتهم وإدارة ملف المتجر والعروض"
+        },
+        {
+          "en": "Invoices with paid / unpaid status and a transaction history for each invoice",
+          "fr": "Factures avec statut réglé / non réglé et historique des transactions par facture",
+          "ar": "فواتير بحالة مدفوعة / غير مدفوعة وسجل معاملات لكل فاتورة"
+        }
+      ],
+      "stack": {
+        "frameworks": [
+          "Flutter",
+          "Dart"
+        ],
+        "libraries": [
+          "GetX",
+          "Dio"
+        ],
+        "tools": [
+          "Firebase Cloud Messaging",
+          "REST API",
+          "Token-based authentication"
+        ]
+      },
+      "links": {
+        "playStore": null,
+        "appStore": null,
+        "webDemo": null,
+        "github": null
+      }
+    },
+    {
       "id": "shopsphere",
       "title": "ShopSphere",
       "category": { "en": "E-commerce", "fr": "E-commerce", "ar": "تجارة إلكترونية" },
