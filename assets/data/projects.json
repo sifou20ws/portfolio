@@ -120,6 +120,129 @@
       }
     },
     {
+      "id": "dropili",
+      "title": "Dropili",
+      "category": {
+        "en": "Digital business card · NFC",
+        "fr": "Carte de visite numérique · NFC",
+        "ar": "بطاقة أعمال رقمية · NFC"
+      },
+      "summary": {
+        "en": "A digital business card and profile builder: users gather their bio, contacts, social links and documents in one profile, then share it with a tap on a programmed NFC tag or by QR code.",
+        "fr": "Une carte de visite numérique et un créateur de profil : l'utilisateur réunit sa bio, ses contacts, ses réseaux sociaux et ses documents dans un seul profil, puis le partage d'un simple contact avec un tag NFC programmé ou par QR code.",
+        "ar": "بطاقة أعمال رقمية وأداة لإنشاء الملف الشخصي: يجمع المستخدم نبذته وبيانات الاتصال وروابط التواصل الاجتماعي ومستنداته في ملف واحد، ثم يشاركه بلمسة على شريحة NFC مبرمجة أو عبر رمز QR."
+      },
+      "role": {
+        "en": "Solo developer",
+        "fr": "Développeur unique",
+        "ar": "مطوّر منفرد"
+      },
+      "year": 2022,
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "featured": true,
+      "accentColor": "#00A389",
+      "thumbnail": "assets/images/projects/dropili/thumbnail.jpg",
+      "banner": "assets/images/projects/dropili/banner.jpg",
+      "screenshotsFramed": true,
+      "screenshots": [
+        "assets/images/projects/dropili/01-welcome.png",
+        "assets/images/projects/dropili/02-onboarding.png",
+        "assets/images/projects/dropili/03-login.png",
+        "assets/images/projects/dropili/04-signup.png",
+        "assets/images/projects/dropili/05-profile.png",
+        "assets/images/projects/dropili/06-profile-links.png",
+        "assets/images/projects/dropili/07-edit-profile.png",
+        "assets/images/projects/dropili/08-add-link.png",
+        "assets/images/projects/dropili/09-activate-nfc-tag.png",
+        "assets/images/projects/dropili/10-share-qr.png",
+        "assets/images/projects/dropili/11-friend-profile.png",
+        "assets/images/projects/dropili/12-menu-settings.png"
+      ],
+      "tags": [
+        "Flutter",
+        "BLoC",
+        "NFC",
+        "Firebase",
+        "REST API"
+      ],
+      "problem": {
+        "en": "Exchanging contact details usually means paper cards that go out of date, or reading out every phone number and social account one by one. Dropili replaces that with a single, always up-to-date profile that the owner edits in the app and shares instantly, with a tap on an NFC tag or a scan of a QR code.",
+        "fr": "Échanger ses coordonnées passe souvent par des cartes papier vite obsolètes, ou par la dictée de chaque numéro et compte social un par un. Dropili les remplace par un profil unique, toujours à jour, que l'utilisateur modifie dans l'application et partage instantanément d'un contact sur un tag NFC ou d'un scan de QR code.",
+        "ar": "غالبًا ما يعني تبادل بيانات الاتصال بطاقات ورقية سرعان ما تصبح قديمة، أو إملاء كل رقم وحساب اجتماعي واحدًا تلو الآخر. يستبدل Dropili ذلك بملف شخصي واحد محدَّث دائمًا، يعدّله صاحبه من التطبيق ويشاركه فورًا بلمسة على شريحة NFC أو بمسح رمز QR."
+      },
+      "architecture": {
+        "en": "A Flutter app built around the BLoC pattern, which keeps business logic out of the widgets and makes each flow (authentication, profile editing, sharing, connections) predictable and testable. NFC support uses the nfc_manager plugin to program physical tags with the user's profile link, and the profile data is served through REST APIs alongside Firebase services.",
+        "fr": "Une application Flutter construite autour du pattern BLoC, qui sépare la logique métier des widgets et rend chaque parcours (authentification, édition du profil, partage, contacts) prévisible et testable. La prise en charge NFC s'appuie sur le plugin nfc_manager pour programmer les tags physiques avec le lien du profil, et les données du profil sont servies par des API REST avec des services Firebase.",
+        "ar": "تطبيق Flutter مبني على نمط BLoC الذي يفصل منطق الأعمال عن عناصر الواجهة ويجعل كل مسار (المصادقة، تعديل الملف، المشاركة، جهات الاتصال) متوقعًا وقابلًا للاختبار. يعتمد دعم NFC على الإضافة nfc_manager لبرمجة الشرائح الفعلية برابط الملف الشخصي، وتُقدَّم بيانات الملف عبر واجهات REST إلى جانب خدمات Firebase."
+      },
+      "features": [
+        {
+          "en": "One profile for bio, contact details, social links, payment methods and documents such as CVs or menus",
+          "fr": "Un seul profil pour la bio, les coordonnées, les réseaux sociaux, les moyens de paiement et des documents comme un CV ou un menu",
+          "ar": "ملف واحد يضم النبذة وبيانات الاتصال وروابط التواصل ووسائل الدفع ومستندات مثل السيرة الذاتية أو قائمة الطعام"
+        },
+        {
+          "en": "Program a physical NFC tag in the app so anyone can open the profile with a tap",
+          "fr": "Programmation d'un tag NFC physique depuis l'application pour ouvrir le profil d'un simple contact",
+          "ar": "برمجة شريحة NFC فعلية من التطبيق ليتمكن أي شخص من فتح الملف بلمسة"
+        },
+        {
+          "en": "QR code and short link to share the profile without NFC",
+          "fr": "QR code et lien court pour partager le profil sans NFC",
+          "ar": "رمز QR ورابط قصير لمشاركة الملف دون NFC"
+        },
+        {
+          "en": "Wide catalogue of contact, social media and payment links, added from a visual picker",
+          "fr": "Large catalogue de liens de contact, de réseaux sociaux et de paiement, ajoutés depuis un sélecteur visuel",
+          "ar": "مجموعة واسعة من روابط الاتصال والتواصل الاجتماعي والدفع تُضاف من منتقٍ مرئي"
+        },
+        {
+          "en": "Switches to redirect visitors straight to one link or to deactivate the profile",
+          "fr": "Interrupteurs pour rediriger directement les visiteurs vers un lien ou désactiver le profil",
+          "ar": "مفاتيح لتوجيه الزوار مباشرة إلى رابط واحد أو لتعطيل الملف"
+        },
+        {
+          "en": "Connect with other Dropili users and keep their profiles in a collection",
+          "fr": "Connexion avec d'autres utilisateurs Dropili et collection de leurs profils",
+          "ar": "التواصل مع مستخدمي Dropili الآخرين وحفظ ملفاتهم في مجموعة"
+        },
+        {
+          "en": "Sign-up with email or Google, with guided onboarding",
+          "fr": "Inscription par e-mail ou Google, avec un onboarding guidé",
+          "ar": "التسجيل بالبريد الإلكتروني أو Google مع جولة تعريفية موجّهة"
+        },
+        {
+          "en": "Interface available in English, French and Arabic",
+          "fr": "Interface disponible en anglais, français et arabe",
+          "ar": "واجهة متاحة بالإنجليزية والفرنسية والعربية"
+        }
+      ],
+      "stack": {
+        "frameworks": [
+          "Flutter",
+          "Dart"
+        ],
+        "libraries": [
+          "flutter_bloc",
+          "nfc_manager"
+        ],
+        "tools": [
+          "Firebase",
+          "REST API",
+          "NFC tags"
+        ]
+      },
+      "links": {
+        "playStore": null,
+        "appStore": null,
+        "webDemo": null,
+        "github": null
+      }
+    },
+    {
       "id": "shopsphere",
       "title": "ShopSphere",
       "category": { "en": "E-commerce", "fr": "E-commerce", "ar": "تجارة إلكترونية" },
