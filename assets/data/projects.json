@@ -243,6 +243,122 @@
       }
     },
     {
+      "id": "adjyalcom",
+      "title": "Adjyalcom",
+      "category": {
+        "en": "Real estate · PropTech",
+        "fr": "Immobilier · PropTech",
+        "ar": "العقارات · التقنية العقارية"
+      },
+      "summary": {
+        "en": "A real estate management and client communication app that connects apartment buyers with their developer: explore projects on Google Maps, follow the construction of your own apartment, and keep track of payment schedules and property fees.",
+        "fr": "Une application de gestion immobilière et de communication client qui relie les acquéreurs à leur promoteur : explorer les projets sur Google Maps, suivre la construction de son appartement et gérer ses échéanciers de paiement et ses charges.",
+        "ar": "تطبيق لإدارة العقارات والتواصل مع العملاء يربط مشتري الشقق بالمطوّر العقاري: استكشاف المشاريع على خرائط Google، ومتابعة بناء الشقة الخاصة، وتتبع جداول الدفع والرسوم العقارية."
+      },
+      "role": {
+        "en": "Solo developer",
+        "fr": "Développeur unique",
+        "ar": "مطوّر منفرد"
+      },
+      "year": 2024,
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "featured": true,
+      "accentColor": "#0284C7",
+      "thumbnail": "assets/images/projects/adjyalcom/thumbnail.jpg",
+      "banner": "assets/images/projects/adjyalcom/banner.jpg",
+      "screenshots": [
+        "assets/images/projects/adjyalcom/01-login.jpg",
+        "assets/images/projects/adjyalcom/02-home.jpg",
+        "assets/images/projects/adjyalcom/03-projects-map.jpg",
+        "assets/images/projects/adjyalcom/04-residence.jpg",
+        "assets/images/projects/adjyalcom/05-apartment-types.jpg",
+        "assets/images/projects/adjyalcom/06-construction-progress.jpg",
+        "assets/images/projects/adjyalcom/07-my-space.jpg",
+        "assets/images/projects/adjyalcom/08-payment-history.jpg",
+        "assets/images/projects/adjyalcom/09-notifications.jpg",
+        "assets/images/projects/adjyalcom/10-book-appointment.jpg",
+        "assets/images/projects/adjyalcom/11-appointment-confirmed.jpg",
+        "assets/images/projects/adjyalcom/12-quote-request.jpg"
+      ],
+      "tags": [
+        "Flutter",
+        "GetX",
+        "Google Maps",
+        "FCM",
+        "REST API"
+      ],
+      "problem": {
+        "en": "Buying an apartment from a developer is a long process: buyers wait months or years for construction, have to keep up with payment schedules and property fees, and getting an update usually means contacting the developer directly. Adjyalcom gives them a single place to see where their apartment stands, what they owe and when, and a direct line to the developer, saving time on both sides.",
+        "fr": "Acheter un appartement auprès d'un promoteur est un long processus : l'acquéreur attend des mois, voire des années, la fin des travaux, doit suivre ses échéanciers de paiement et ses charges, et obtenir des nouvelles implique généralement de contacter directement le promoteur. Adjyalcom lui offre un espace unique pour voir où en est son appartement, ce qu'il doit et quand, ainsi qu'un lien direct avec le promoteur, ce qui fait gagner du temps aux deux parties.",
+        "ar": "شراء شقة من مطوّر عقاري عملية طويلة: ينتظر المشتري أشهرًا أو سنوات حتى ينتهي البناء، ويتعين عليه متابعة جداول الدفع والرسوم، وغالبًا ما يعني الحصول على أي مستجد التواصل مع المطوّر مباشرة. يوفّر Adjyalcom مكانًا واحدًا لمعرفة حالة الشقة والمبالغ المستحقة ومواعيدها، مع قناة تواصل مباشرة مع المطوّر، ما يوفّر الوقت على الطرفين."
+      },
+      "architecture": {
+        "en": "A Flutter app using GetX for reactive state management, navigation and dependency injection. Project, residence and account data come from REST APIs; the Google Maps API places every development on an interactive map; and Firebase Cloud Messaging delivers payment-schedule reminders and construction updates as push notifications.",
+        "fr": "Une application Flutter qui s'appuie sur GetX pour la gestion d'état réactive, la navigation et l'injection de dépendances. Les données des projets, des résidences et du compte proviennent d'API REST ; l'API Google Maps place chaque programme sur une carte interactive ; et Firebase Cloud Messaging envoie les rappels d'échéances et les nouvelles du chantier sous forme de notifications push.",
+        "ar": "تطبيق Flutter يعتمد على GetX لإدارة الحالة التفاعلية والتنقل وحقن الاعتماديات. تأتي بيانات المشاريع والإقامات والحساب من واجهات REST، وتضع واجهة خرائط Google كل مشروع على خريطة تفاعلية، ويرسل Firebase Cloud Messaging تذكيرات مواعيد الدفع ومستجدات الورشة كإشعارات فورية."
+      },
+      "features": [
+        {
+          "en": "Quick access to project information and availability, with a detailed presentation of the developer and each of its projects",
+          "fr": "Accès rapide à l'information et à la disponibilité des projets, avec une présentation détaillée de la promotion et de chacun de ses projets",
+          "ar": "وصول سريع إلى معلومات المشاريع وتوفرها، مع عرض مفصّل للمطوّر ولكل مشروع من مشاريعه"
+        },
+        {
+          "en": "Projects shown on Google Maps for easy location",
+          "fr": "Visualisation des projets sur Google Maps pour une localisation facile",
+          "ar": "عرض المشاريع على خرائط Google لتحديد مواقعها بسهولة"
+        },
+        {
+          "en": "Residence views with summarised details, apartment types and informative icons for amenities",
+          "fr": "Vues des résidences avec détails résumés, types d'appartements et pictogrammes informatifs pour les équipements",
+          "ar": "عروض للإقامات مع تفاصيل مختصرة وأنواع الشقق وأيقونات توضيحية للمرافق"
+        },
+        {
+          "en": "Personalised construction tracking by apartment type, with progress and floor plans",
+          "fr": "Suivi de chantier personnalisé par type d'appartement, avec avancement et plans",
+          "ar": "متابعة مخصّصة للورشة حسب نوع الشقة مع نسبة التقدم والمخططات"
+        },
+        {
+          "en": "Property management: tracking of fee payments and invoices, with a payment history",
+          "fr": "Gestion immobilière : suivi du paiement des charges et des factures, avec historique des paiements",
+          "ar": "إدارة عقارية: متابعة دفع الرسوم والفواتير مع سجل للمدفوعات"
+        },
+        {
+          "en": "Push notifications for payment schedules and reminders, so nothing is missed",
+          "fr": "Notifications des échéanciers de paiement et rappels pour ne rien manquer",
+          "ar": "إشعارات بجداول الدفع وتذكيرات حتى لا يفوت المستخدم شيئًا"
+        },
+        {
+          "en": "Direct link between client and developer, including appointment booking and quote requests",
+          "fr": "Point de liaison direct entre le client et la promotion, avec prise de rendez-vous et demande de devis",
+          "ar": "قناة مباشرة بين العميل والمطوّر تشمل حجز المواعيد وطلب عروض الأسعار"
+        }
+      ],
+      "stack": {
+        "frameworks": [
+          "Flutter",
+          "Dart"
+        ],
+        "libraries": [
+          "GetX"
+        ],
+        "tools": [
+          "Google Maps API",
+          "Firebase Cloud Messaging",
+          "REST API"
+        ]
+      },
+      "links": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.adjyalcom.adjyal",
+        "appStore": "https://apps.apple.com/us/app/adjyalcom/id6737834308",
+        "webDemo": null,
+        "github": null
+      }
+    },
+    {
       "id": "shopsphere",
       "title": "ShopSphere",
       "category": { "en": "E-commerce", "fr": "E-commerce", "ar": "تجارة إلكترونية" },
