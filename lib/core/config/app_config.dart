@@ -19,9 +19,18 @@ abstract final class AppConfig {
   // ---------------------------------------------------------------------------
   // Links — set any of them to `null` to hide the corresponding button.
   // ---------------------------------------------------------------------------
-  static const String email = 'hello@example.com';
-  static const String? githubUrl = 'https://github.com/your-username';
-  static const String? linkedInUrl = 'https://www.linkedin.com/in/your-profile';
+  static const String email = 'rezrazi.seif@gmail.com';
+  static const String? githubUrl = 'https://github.com/sifou20ws';
+  static const String? linkedInUrl =
+      'https://www.linkedin.com/in/rezrazi-seif/';
+
+  /// WhatsApp number in international format (with `+` and country code).
+  static const String? whatsappNumber = '+213556909574';
+
+  /// `wa.me` link that opens a chat in WhatsApp (app or web).
+  static String? get whatsappUrl => whatsappNumber == null
+      ? null
+      : 'https://wa.me/${whatsappNumber!.replaceAll(RegExp(r'[^0-9]'), '')}';
 
   /// Hosted CV (Google Drive, GitHub raw, your own domain…). A remote URL
   /// works identically on mobile, desktop and web.
