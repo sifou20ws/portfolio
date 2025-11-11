@@ -86,7 +86,13 @@ class LanguageMenuButton extends StatelessWidget {
             children: [
               const Icon(Icons.translate_rounded, size: 20),
               const SizedBox(width: AppSpacing.xxs),
-              Text(current.shortLabel, style: context.text.labelLarge),
+              Text(
+                current.shortLabel,
+                // Follow the surrounding icon colour so it matches the icon.
+                style: context.text.labelLarge?.copyWith(
+                  color: IconTheme.of(context).color,
+                ),
+              ),
             ],
           ),
         ),
