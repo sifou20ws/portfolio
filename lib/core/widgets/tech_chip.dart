@@ -30,9 +30,11 @@ class TechChip extends StatelessWidget {
         label,
         style: (dense ? context.text.labelSmall : context.text.labelMedium)
             ?.copyWith(
-              color: context.isDark
-                  ? Color.lerp(accent, Colors.white, 0.45)
-                  : Color.lerp(accent, Colors.black, 0.25),
+              color: context.readable(
+                context.isDark
+                    ? Color.lerp(accent, Colors.white, 0.45)!
+                    : Color.lerp(accent, Colors.black, 0.25)!,
+              ),
               fontWeight: FontWeight.w600,
             ),
       ),
