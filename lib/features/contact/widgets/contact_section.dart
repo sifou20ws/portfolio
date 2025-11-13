@@ -86,6 +86,13 @@ class _SocialLinks extends StatelessWidget {
             value: AppConfig.email,
             onTap: () => LinkLauncher.email(AppConfig.email),
           ),
+          if (AppConfig.whatsappNumber != null)
+            (
+              icon: FontAwesomeIcons.whatsapp,
+              label: 'WhatsApp',
+              value: AppConfig.whatsappNumber!,
+              onTap: () => LinkLauncher.open(AppConfig.whatsappUrl!),
+            ),
           if (AppConfig.githubUrl != null)
             (
               icon: FontAwesomeIcons.github,
