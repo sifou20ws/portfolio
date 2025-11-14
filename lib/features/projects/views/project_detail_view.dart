@@ -67,8 +67,7 @@ class _DetailBody extends GetView<ProjectDetailController> {
             ),
           ),
           actions: const [
-            LanguageMenuButton(),
-            ThemeToggleButton(),
+            _HeaderActions(),
             SizedBox(width: AppSpacing.xs),
           ],
           flexibleSpace: FlexibleSpaceBar(
@@ -146,6 +145,38 @@ class _DetailBody extends GetView<ProjectDetailController> {
   }
 }
 
+/// Language + theme buttons in a filled pill, styled like the back button so
+/// they stay legible over any banner (a bright yellow one included).
+class _HeaderActions extends StatelessWidget {
+  const _HeaderActions();
+
+  @override
+  Widget build(BuildContext context) {
+    final background = context.colors.secondaryContainer;
+    final foreground = context.colors.onSecondaryContainer;
+    return Material(
+      color: background,
+      shape: const StadiumBorder(),
+      clipBehavior: Clip.antiAlias,
+      child: IconTheme(
+        data: IconThemeData(color: foreground),
+        child: IconButtonTheme(
+          data: IconButtonThemeData(
+            style: IconButton.styleFrom(foregroundColor: foreground),
+          ),
+          child: DefaultTextStyle.merge(
+            style: TextStyle(color: foreground),
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [LanguageMenuButton(), ThemeToggleButton()],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _Header extends StatelessWidget {
   const _Header({required this.project});
 
@@ -205,7 +236,11 @@ class _Header extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(m.icon, size: 20, color: project.accentColor),
+                Icon(
+                  m.icon,
+                  size: 20,
+                  color: context.readable(project.accentColor),
+                ),
                 const SizedBox(width: AppSpacing.xs),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -296,7 +331,7 @@ class _WriteUp extends StatelessWidget {
                       child: Icon(
                         Icons.check_circle_rounded,
                         size: 20,
-                        color: project.accentColor,
+                        color: context.readable(project.accentColor),
                       ),
                     ),
                     const SizedBox(width: AppSpacing.sm),
