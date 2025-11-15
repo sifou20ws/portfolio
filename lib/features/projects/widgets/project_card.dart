@@ -140,7 +140,9 @@ class ProjectCard extends StatelessWidget {
                   alignment: AlignmentDirectional.centerStart,
                   child: TextButton(
                     onPressed: onTap,
-                    style: TextButton.styleFrom(foregroundColor: accent),
+                    style: TextButton.styleFrom(
+                      foregroundColor: context.readable(accent),
+                    ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
