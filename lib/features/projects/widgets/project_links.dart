@@ -74,7 +74,10 @@ class ProjectLinksBar extends StatelessWidget {
         for (var i = 0; i < entries.length; i++)
           i == 0
               ? FilledButton.icon(
-                  style: FilledButton.styleFrom(backgroundColor: accent),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: accent,
+                    foregroundColor: onColor(accent),
+                  ),
                   onPressed: () => LinkLauncher.open(entries[i].url),
                   icon: FaIcon(entries[i].icon, size: 16),
                   label: Text(entries[i].label),
