@@ -357,6 +357,238 @@
         "webDemo": null,
         "github": null
       }
+    },
+    {
+      "id": "b-school",
+      "title": "B.School",
+      "category": {
+        "en": "EdTech · E-learning",
+        "fr": "EdTech · E-learning",
+        "ar": "تقنيات التعليم · التعلم الإلكتروني"
+      },
+      "summary": {
+        "en": "An e-learning app for Algerian middle and high school students: browse teachers and courses, buy a subscription, activate it by scanning a QR code, and unlock every video lesson and study material it includes.",
+        "fr": "Une application d'e-learning pour les collégiens et lycéens algériens : parcourir les enseignants et les cours, acheter un abonnement, l'activer en scannant un QR code et débloquer toutes les leçons vidéo et les supports qu'il contient.",
+        "ar": "تطبيق تعلّم إلكتروني لتلاميذ المتوسط والثانوي في الجزائر: تصفّح الأساتذة والدروس، وشراء اشتراك وتفعيله بمسح رمز QR، ثم الوصول إلى كل الدروس المصوّرة والمواد التعليمية التي يتضمنها."
+      },
+      "role": {
+        "en": "Solo developer",
+        "fr": "Développeur unique",
+        "ar": "مطوّر منفرد"
+      },
+      "year": 2024,
+      "platforms": [],
+      "featured": true,
+      "accentColor": "#FFCF1A",
+      "thumbnail": "assets/images/projects/b-school/thumbnail.jpg",
+      "banner": "assets/images/projects/b-school/banner.jpg",
+      "screenshots": [
+        "assets/images/projects/b-school/01-login.jpg",
+        "assets/images/projects/b-school/02-signup.jpg",
+        "assets/images/projects/b-school/03-subjects.jpg",
+        "assets/images/projects/b-school/04-chapters-by-month.jpg",
+        "assets/images/projects/b-school/05-chapter.jpg",
+        "assets/images/projects/b-school/06-lessons.jpg",
+        "assets/images/projects/b-school/07-video-lesson.jpg",
+        "assets/images/projects/b-school/08-subscription.jpg",
+        "assets/images/projects/b-school/09-qr-activation.jpg",
+        "assets/images/projects/b-school/10-profile.jpg",
+        "assets/images/projects/b-school/11-forum-stories.jpg",
+        "assets/images/projects/b-school/12-instructor-story.jpg"
+      ],
+      "tags": [
+        "Flutter",
+        "GetX",
+        "REST API",
+        "QR code"
+      ],
+      "problem": {
+        "en": "Students preparing for their exams often have to piece together lessons from different sources, and teachers need a simple way to offer paid access to their courses. B.School brings teachers and their courses into one app: students can see who teaches what, preview a course before paying, and unlock everything in their subscription with a single QR scan.",
+        "fr": "Les élèves qui préparent leurs examens doivent souvent rassembler des cours venant de sources différentes, et les enseignants ont besoin d'un moyen simple de proposer un accès payant à leurs cours. B.School réunit enseignants et cours dans une seule application : l'élève voit qui enseigne quoi, découvre un aperçu du cours avant de payer et débloque tout son abonnement d'un simple scan de QR code.",
+        "ar": "كثيرًا ما يضطر التلاميذ الذين يستعدون لامتحاناتهم إلى جمع الدروس من مصادر متفرقة، ويحتاج الأساتذة إلى طريقة بسيطة لتقديم دروسهم مقابل اشتراك. يجمع B.School الأساتذة ودروسهم في تطبيق واحد: يرى التلميذ من يدرّس ماذا، ويطّلع على لمحة عن الدرس قبل الدفع، ويفتح كل محتوى اشتراكه بمسح رمز QR واحد."
+      },
+      "architecture": {
+        "en": "A Flutter app built with GetX for reactive state management, navigation and dependency injection. Everything the student sees (teachers, subjects, chapters, lessons, subscriptions, forum and stories) is loaded from the B.School server through its REST API, and subscriptions are activated from the in-app QR scanner. Video lessons use a player that lets students pause, resume and rewatch at their own pace.",
+        "fr": "Une application Flutter construite avec GetX pour la gestion d'état réactive, la navigation et l'injection de dépendances. Tout ce que voit l'élève (enseignants, matières, chapitres, leçons, abonnements, forum et stories) est chargé depuis le serveur B.School via son API REST, et les abonnements s'activent depuis le scanner QR intégré. Les leçons vidéo utilisent un lecteur qui permet de mettre en pause, reprendre et revoir à son rythme.",
+        "ar": "تطبيق Flutter مبني باستخدام GetX لإدارة الحالة التفاعلية والتنقل وحقن الاعتماديات. كل ما يراه التلميذ (الأساتذة والمواد والفصول والدروس والاشتراكات والمنتدى والقصص) يُحمَّل من خادم B.School عبر واجهة REST الخاصة به، وتُفعَّل الاشتراكات من ماسح QR المدمج. وتعتمد الدروس المصوّرة على مشغّل يتيح الإيقاف والاستئناف وإعادة المشاهدة وفق وتيرة التلميذ."
+      },
+      "features": [
+        {
+          "en": "Browse available teachers and courses, with a short preview of each course",
+          "fr": "Parcours des enseignants et des cours disponibles, avec un aperçu de chaque cours",
+          "ar": "تصفّح الأساتذة والدروس المتاحة مع لمحة قصيرة عن كل درس"
+        },
+        {
+          "en": "Subscriptions activated by scanning a QR code, then managed and renewed directly in the app",
+          "fr": "Abonnements activés en scannant un QR code, puis gérés et renouvelés directement dans l'application",
+          "ar": "تفعيل الاشتراكات بمسح رمز QR ثم إدارتها وتجديدها مباشرة من التطبيق"
+        },
+        {
+          "en": "Full access to all the study material included in a subscription",
+          "fr": "Accès complet à tous les supports de cours inclus dans l'abonnement",
+          "ar": "وصول كامل إلى جميع المواد التعليمية المشمولة في الاشتراك"
+        },
+        {
+          "en": "High-quality video lessons from experienced teachers, to pause, resume and rewatch at any time",
+          "fr": "Leçons vidéo de qualité par des enseignants expérimentés, à mettre en pause, reprendre et revoir à tout moment",
+          "ar": "دروس مصوّرة عالية الجودة يقدّمها أساتذة ذوو خبرة، مع إمكانية الإيقاف والاستئناف وإعادة المشاهدة في أي وقت"
+        },
+        {
+          "en": "A wide range of subjects and chapters, from physics to languages and mathematics",
+          "fr": "Un large choix de matières et de chapitres, de la physique aux langues et aux mathématiques",
+          "ar": "تشكيلة واسعة من المواد والفصول، من الفيزياء إلى اللغات والرياضيات"
+        },
+        {
+          "en": "Stories posted by instructors to share news and updates",
+          "fr": "Stories publiées par les enseignants pour partager leurs actualités",
+          "ar": "قصص ينشرها الأساتذة لمشاركة الأخبار والمستجدات"
+        },
+        {
+          "en": "Integrated forum where students and teachers ask questions, share ideas and collaborate",
+          "fr": "Forum intégré où élèves et enseignants posent des questions, partagent des idées et collaborent",
+          "ar": "منتدى مدمج يطرح فيه التلاميذ والأساتذة الأسئلة ويتبادلون الأفكار ويتعاونون"
+        }
+      ],
+      "stack": {
+        "frameworks": [
+          "Flutter",
+          "Dart"
+        ],
+        "libraries": [
+          "GetX"
+        ],
+        "tools": [
+          "REST API",
+          "QR code scanning"
+        ]
+      },
+      "links": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.sadeeminfo.b_school&hl=en",
+        "appStore": "https://apps.apple.com/us/app/bschool/id6532618700",
+        "webDemo": null,
+        "github": null
+      }
+    },
+    {
+      "id": "hafaf-pro",
+      "title": "Hafaf Pro",
+      "category": {
+        "en": "Booking · Barbershops",
+        "fr": "Réservation · Barbiers",
+        "ar": "حجز المواعيد · صالونات الحلاقة"
+      },
+      "summary": {
+        "en": "A booking app that connects barbers with clients: barbers publish their shop, services, prices, photos and schedule, and clients find nearby barbershops on the map and book an available time slot.",
+        "fr": "Une application de réservation qui met en relation barbiers et clients : le barbier publie son salon, ses prestations, ses tarifs, ses photos et ses horaires, et le client trouve les salons proches sur la carte et réserve un créneau disponible.",
+        "ar": "تطبيق حجز يربط الحلاقين بالزبائن: ينشر الحلاق صالونه وخدماته وأسعاره وصور أعماله ومواعيد عمله، ويجد الزبون الصالونات القريبة على الخريطة ويحجز موعدًا متاحًا."
+      },
+      "role": {
+        "en": "Solo developer",
+        "fr": "Développeur unique",
+        "ar": "مطوّر منفرد"
+      },
+      "year": 2025,
+      "platforms": [],
+      "featured": true,
+      "accentColor": "#D5DE53",
+      "thumbnail": "assets/images/projects/hafaf-pro/thumbnail.jpg",
+      "banner": "assets/images/projects/hafaf-pro/banner.jpg",
+      "screenshotsFramed": true,
+      "screenshots": [
+        "assets/images/projects/hafaf-pro/01-welcome.png",
+        "assets/images/projects/hafaf-pro/02-login.png",
+        "assets/images/projects/hafaf-pro/03-home.png",
+        "assets/images/projects/hafaf-pro/04-search.png",
+        "assets/images/projects/hafaf-pro/05-map.png",
+        "assets/images/projects/hafaf-pro/06-filters.png",
+        "assets/images/projects/hafaf-pro/07-barber-services.png",
+        "assets/images/projects/hafaf-pro/08-barber-about-hours.png",
+        "assets/images/projects/hafaf-pro/09-reviews.png",
+        "assets/images/projects/hafaf-pro/10-my-cuts.png",
+        "assets/images/projects/hafaf-pro/11-settings.png",
+        "assets/images/projects/hafaf-pro/12-language.png"
+      ],
+      "tags": [
+        "Flutter",
+        "BLoC",
+        "Firebase",
+        "Google Maps",
+        "FCM"
+      ],
+      "problem": {
+        "en": "Getting a haircut often means phoning around or walking in and waiting, while barbers keep track of their appointments by hand. Hafaf Pro puts both sides in one app: barbers show their work, services and opening hours, clients book a real available slot, and both are reminded before the appointment. It was built as an MVP for a client.",
+        "fr": "Se faire couper les cheveux implique souvent d'appeler plusieurs salons ou de se présenter et d'attendre, tandis que les barbiers gèrent leurs rendez-vous à la main. Hafaf Pro réunit les deux côtés dans une seule application : le barbier présente son travail, ses prestations et ses horaires, le client réserve un créneau réellement disponible, et chacun reçoit un rappel avant le rendez-vous. L'application a été réalisée comme MVP pour un client.",
+        "ar": "كثيرًا ما يعني الحصول على قصة شعر الاتصال بعدة صالونات أو الحضور والانتظار، بينما يدير الحلاقون مواعيدهم يدويًا. يجمع Hafaf Pro الطرفين في تطبيق واحد: يعرض الحلاق أعماله وخدماته ومواعيد عمله، ويحجز الزبون موعدًا متاحًا فعلًا، ويتلقى كلاهما تذكيرًا قبل الموعد. طُوّر التطبيق كنسخة أولية (MVP) لأحد العملاء."
+      },
+      "architecture": {
+        "en": "A Flutter app built on the BLoC pattern, which keeps booking, schedule and profile logic out of the UI. Firebase is the whole backend: Cloud Firestore stores barbershops, services, schedules and appointments; Firebase Storage hosts the barbers' work photos; Firebase Cloud Messaging sends appointment notifications to both sides; and Firebase Crashlytics reports crashes from the field. Google Maps shows every barbershop around the client.",
+        "fr": "Une application Flutter construite sur le pattern BLoC, qui sort de l'interface la logique de réservation, de planning et de profil. Firebase constitue tout le backend : Cloud Firestore stocke les salons, les prestations, les plannings et les rendez-vous ; Firebase Storage héberge les photos des réalisations ; Firebase Cloud Messaging envoie les notifications de rendez-vous aux deux parties ; et Firebase Crashlytics remonte les plantages en production. Google Maps affiche tous les salons autour du client.",
+        "ar": "تطبيق Flutter مبني على نمط BLoC الذي يفصل منطق الحجز والمواعيد والملفات الشخصية عن الواجهة. يشكّل Firebase الخادم بالكامل: يخزّن Cloud Firestore الصالونات والخدمات وجداول العمل والمواعيد، ويستضيف Firebase Storage صور أعمال الحلاقين، ويرسل Firebase Cloud Messaging إشعارات المواعيد إلى الطرفين، ويرصد Firebase Crashlytics الأعطال أثناء الاستخدام. وتعرض خرائط Google كل الصالونات المحيطة بالزبون."
+      },
+      "features": [
+        {
+          "en": "Barber accounts with shop description, location, services and prices, working schedule and a gallery of their work",
+          "fr": "Comptes barbiers avec description du salon, localisation, prestations et tarifs, planning et galerie de réalisations",
+          "ar": "حسابات للحلاقين تضم وصف الصالون وموقعه والخدمات والأسعار وجدول العمل ومعرضًا لأعمالهم"
+        },
+        {
+          "en": "Browse and search barbershops, with filters by rating and distance",
+          "fr": "Recherche et parcours des salons, avec filtres par note et par distance",
+          "ar": "تصفّح الصالونات والبحث عنها مع تصفية حسب التقييم والمسافة"
+        },
+        {
+          "en": "Map of nearby barbershops powered by Google Maps",
+          "fr": "Carte des salons à proximité avec Google Maps",
+          "ar": "خريطة للصالونات القريبة باستخدام خرائط Google"
+        },
+        {
+          "en": "Barbershop page with services, about and opening hours, and client reviews",
+          "fr": "Page salon avec prestations, présentation, horaires et avis clients",
+          "ar": "صفحة للصالون تضم الخدمات والنبذة ومواعيد العمل وآراء الزبائن"
+        },
+        {
+          "en": "Appointment booking based on the barber's available time slots, which the barber then accepts",
+          "fr": "Réservation selon les créneaux disponibles du barbier, qui accepte ensuite le rendez-vous",
+          "ar": "حجز المواعيد حسب الفترات المتاحة لدى الحلاق الذي يقبل الموعد بعد ذلك"
+        },
+        {
+          "en": "Push notifications to both the barber and the client when the appointment is near",
+          "fr": "Notifications push au barbier et au client à l'approche du rendez-vous",
+          "ar": "إشعارات فورية للحلاق والزبون عند اقتراب الموعد"
+        },
+        {
+          "en": "Sign-in with email, Google or Facebook, and phone number verification",
+          "fr": "Connexion par e-mail, Google ou Facebook, et vérification du numéro de téléphone",
+          "ar": "تسجيل الدخول بالبريد الإلكتروني أو Google أو Facebook مع التحقق من رقم الهاتف"
+        },
+        {
+          "en": "Interface in Arabic, English and French",
+          "fr": "Interface en arabe, anglais et français",
+          "ar": "واجهة بالعربية والإنجليزية والفرنسية"
+        }
+      ],
+      "stack": {
+        "frameworks": [
+          "Flutter",
+          "Dart"
+        ],
+        "libraries": [
+          "flutter_bloc",
+          "Google Maps"
+        ],
+        "tools": [
+          "Cloud Firestore",
+          "Firebase Storage",
+          "Firebase Cloud Messaging",
+          "Firebase Crashlytics"
+        ]
+      },
+      "links": {
+        "playStore": null,
+        "appStore": null,
+        "webDemo": null,
+        "github": null
+      }
     }
   ]
 }
