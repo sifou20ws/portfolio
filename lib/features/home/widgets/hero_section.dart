@@ -8,6 +8,7 @@ import '../../../core/responsive/responsive.dart';
 import '../../../core/theme/app_tokens.dart';
 import '../../../core/utils/context_ext.dart';
 import '../../../core/utils/link_launcher.dart';
+import '../../../core/widgets/interactive_background.dart';
 import '../../../core/widgets/project_image.dart';
 import '../controllers/home_controller.dart';
 
@@ -367,7 +368,8 @@ class _FloatingBadge extends StatelessWidget {
   }
 }
 
-/// Two blurred colour blobs behind the hero.
+/// Two blurred colour blobs behind the hero. They drift in opposite
+/// directions as the mouse moves (parallax), via [InteractiveBackground].
 class _BackgroundGlow extends StatelessWidget {
   const _BackgroundGlow();
 
@@ -384,6 +386,9 @@ class _BackgroundGlow extends StatelessWidget {
       ),
     );
 
+    final pointer =
+        InteractiveBackground.of(context)?.normalized ?? Offset.zero;
+
     return IgnorePointer(
       child: Stack(
         clipBehavior: Clip.hardEdge,
@@ -391,12 +396,18 @@ class _BackgroundGlow extends StatelessWidget {
           PositionedDirectional(
             top: -120,
             end: -80,
-            child: blob(context.colors.primary, 520),
+            child: Transform.translate(
+              offset: pointer * 40,
+              child: blob(context.colors.primary, 520),
+            ),
           ),
           PositionedDirectional(
             bottom: -160,
             start: -120,
-            child: blob(AppColors.accent, 460),
+            child: Transform.translate(
+              offset: pointer * -30,
+              child: blob(AppColors.accent, 460),
+            ),
           ),
         ],
       ),
