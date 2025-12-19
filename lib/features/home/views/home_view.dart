@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../core/responsive/responsive.dart';
 import '../../../core/theme/app_tokens.dart';
+import '../../../core/widgets/interactive_background.dart';
 import '../../contact/widgets/contact_section.dart';
 import '../../projects/widgets/projects_section.dart';
 import '../../skills/widgets/skills_section.dart';
@@ -26,16 +27,20 @@ class HomeView extends GetView<HomeController> {
       appBar: topNav ? const DesktopHeader() : const MobileAppBar(),
       bottomNavigationBar: topNav ? null : const MobileNavBar(),
       floatingActionButton: topNav ? const _BackToTopButton() : null,
-      body: SingleChildScrollView(
-        controller: controller.scrollController,
-        child: Column(
-          children: [
-            _section(HomeSection.home, const HeroSection()),
-            _section(HomeSection.skills, const SkillsSection()),
-            _section(HomeSection.projects, const ProjectsSection()),
-            _section(HomeSection.contact, const ContactSection()),
-            const Footer(),
-          ],
+      // Mouse-reactive spotlight + dot field behind the whole page.
+      body: InteractiveBackground(
+        scrollController: controller.scrollController,
+        child: SingleChildScrollView(
+          controller: controller.scrollController,
+          child: Column(
+            children: [
+              _section(HomeSection.home, const HeroSection()),
+              _section(HomeSection.skills, const SkillsSection()),
+              _section(HomeSection.projects, const ProjectsSection()),
+              _section(HomeSection.contact, const ContactSection()),
+              const Footer(),
+            ],
+          ),
         ),
       ),
     );
