@@ -21,7 +21,7 @@ class PortfolioApp extends StatelessWidget {
     return Obx(() {
       final locale = settings.locale.value;
       return GetMaterialApp(
-        title: AppConfig.fullName,
+        title: AppConfig.siteTitle,
         debugShowCheckedModeBanner: false,
 
         // Theme
