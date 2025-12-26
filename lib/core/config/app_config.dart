@@ -9,11 +9,18 @@
 abstract final class AppConfig {
   static const String fullName = 'Seifeddine Rezrazi';
 
+  /// Browser tab title (keep in sync with `<title>` in `web/index.html`).
+  static const String siteTitle = '$fullName · Flutter Developer';
+
+  /// Tab title for a project page.
+  static String projectTitle(String project) => '$project · $fullName';
+
   /// Short initials used by the logo mark and the hero avatar.
   static const String initials = 'SR';
 
   /// Optional profile photo (asset path or https URL). When `null` the hero
   /// shows a gradient avatar with your [initials].
+  // TODO(seif): add a profile photo (square, at least 600×600) and set it here.
   static const String? avatar = null;
 
   // ---------------------------------------------------------------------------
@@ -24,6 +31,12 @@ abstract final class AppConfig {
   static const String? linkedInUrl =
       'https://www.linkedin.com/in/rezrazi-seif/';
 
+  /// Formspree form ID (the part after `https://formspree.io/f/`). When set,
+  /// the contact form sends messages straight to your inbox; when `null`, it
+  /// opens the visitor's email app instead.
+  // TODO(seif): create a free form at formspree.io and paste its ID here.
+  static const String? formspreeId = null;
+
   /// WhatsApp number in international format (with `+` and country code).
   static const String? whatsappNumber = '+213556909574';
 
@@ -32,16 +45,18 @@ abstract final class AppConfig {
       ? null
       : 'https://wa.me/${whatsappNumber!.replaceAll(RegExp(r'[^0-9]'), '')}';
 
-  /// Hosted CV (Google Drive, GitHub raw, your own domain…). A remote URL
-  /// works identically on mobile, desktop and web.
-  static const String? cvUrl = 'https://example.com/cv.pdf';
+  /// CV served by the site itself (source file: `web/cv/`). An absolute URL
+  /// so it also works from the mobile/desktop builds.
+  static const String? cvUrl =
+      'https://sifou20ws.github.io/portfolio/cv/Seifeddine-Rezrazi-CV.pdf';
 
   /// Hero statistics. Values are shown as-is; labels are translation keys.
-  /// Update them to reflect your real track record.
+  /// The row is hidden while the list is empty.
   static const List<({String value, String labelKey})> stats = [
-    (value: '5+', labelKey: 'hero_stat_years'),
-    (value: '20+', labelKey: 'hero_stat_apps'),
-    (value: '1M+', labelKey: 'hero_stat_users'),
+    // TODO(seif): replace with real numbers, then uncomment.
+    // (value: '5+', labelKey: 'hero_stat_years'),
+    // (value: '20+', labelKey: 'hero_stat_apps'),
+    // (value: '1M+', labelKey: 'hero_stat_users'),
   ];
 
   /// Local JSON file that holds all projects. See `assets/data/projects.json`.
