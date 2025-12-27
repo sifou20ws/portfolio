@@ -36,18 +36,19 @@ const Map<String, String> ar = {
       'واجهات دقيقة من قاعدة شيفرة واحدة لكل الشاشات.',
   LocaleKeys.skillCatNative: 'التكامل الأصلي',
   LocaleKeys.skillCatNativeDesc:
-      'قنوات المنصة والوحدات الأصلية عندما يحتاج Flutter إلى دعم.',
+      "شيفرة أصلية لأندرويد و iOS وميزات الجهاز مثل NFC والخرائط ومسح رموز QR.",
   LocaleKeys.skillCatState: 'إدارة الحالة',
   LocaleKeys.skillCatStateDesc:
       'حالة متوقعة وقابلة للاختبار مع فصل واضح للمسؤوليات.',
   LocaleKeys.skillCatBackend: 'الواجهات البرمجية والخادم',
   LocaleKeys.skillCatBackendDesc:
-      'REST و GraphQL وبيانات لحظية ومزامنة تعمل دون اتصال.',
+      "واجهات REST وخدمات Firebase، مع الإشعارات الفورية والمصادقة الآمنة بالرموز.",
   LocaleKeys.skillCatTesting: 'الاختبار والجودة',
   LocaleKeys.skillCatTestingDesc:
-      'اختبارات الوحدات والواجهات والتكامل لاكتشاف الأخطاء مبكرًا.',
+      "اختبارات آلية وتحليل ثابت للشيفرة ورصد للأعطال للحفاظ على استقرار التطبيقات.",
   LocaleKeys.skillCatCicd: 'التكامل والنشر المستمر',
-  LocaleKeys.skillCatCicdDesc: 'بناء وتوقيع ونشر تلقائي على المتاجر مع كل دمج.',
+  LocaleKeys.skillCatCicdDesc:
+      "بناء ونشر آليان، والنشر على Google Play و App Store.",
 
   LocaleKeys.projectsEyebrow: 'الأعمال',
   LocaleKeys.projectsTitle: 'مشاريع مميزة',
@@ -96,7 +97,12 @@ const Map<String, String> ar = {
   LocaleKeys.errEmail: 'يرجى إدخال بريد إلكتروني صالح',
   LocaleKeys.errMessageShort: 'يرجى كتابة @min أحرف على الأقل',
   LocaleKeys.contactSuccessTitle: 'اقتربنا!',
-  LocaleKeys.contactSuccess: 'فُتح تطبيق البريد مع رسالتك — اضغط إرسال فقط.',
+  LocaleKeys.contactSuccess:
+      "من المفترض أن يُفتح تطبيق البريد مع رسالتك. إن لم يحدث ذلك، راسلني على @email.",
+  LocaleKeys.contactSentTitle: "تم إرسال الرسالة!",
+  LocaleKeys.contactSent: "شكرًا لتواصلك — سأرد عليك قريبًا.",
+  LocaleKeys.contactSendFailed:
+      "تعذّر إرسال رسالتك. حاول مرة أخرى، أو راسلني على @email.",
   LocaleKeys.linkError: 'تعذّر فتح @url',
   LocaleKeys.errorTitle: 'حدث خطأ ما',
 
