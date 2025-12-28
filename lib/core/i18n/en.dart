@@ -36,19 +36,19 @@ const Map<String, String> en = {
       'Pixel-perfect UIs from one codebase for every screen.',
   LocaleKeys.skillCatNative: 'Native integration',
   LocaleKeys.skillCatNativeDesc:
-      'Platform channels and native modules when Flutter needs a hand.',
+      "Native Android and iOS code and device features such as NFC, maps and QR scanning.",
   LocaleKeys.skillCatState: 'State management',
   LocaleKeys.skillCatStateDesc:
       'Predictable, testable state with clean separation of concerns.',
   LocaleKeys.skillCatBackend: 'APIs & backend',
   LocaleKeys.skillCatBackendDesc:
-      'REST, GraphQL, realtime data and offline-first sync.',
+      "REST APIs and Firebase services, with push notifications and secure token-based auth.",
   LocaleKeys.skillCatTesting: 'Testing & quality',
   LocaleKeys.skillCatTestingDesc:
-      'Unit, widget, golden and integration tests that catch regressions early.',
+      "Automated tests, static analysis and crash reporting to keep apps stable.",
   LocaleKeys.skillCatCicd: 'CI/CD & DevOps',
   LocaleKeys.skillCatCicdDesc:
-      'Automated builds, signing and store releases on every merge.',
+      "Automated builds and deployments, and publishing to Google Play and the App Store.",
 
   LocaleKeys.projectsEyebrow: 'Portfolio',
   LocaleKeys.projectsTitle: 'Featured projects',
@@ -98,7 +98,12 @@ const Map<String, String> en = {
   LocaleKeys.errMessageShort: 'Please write at least @min characters',
   LocaleKeys.contactSuccessTitle: 'Almost there!',
   LocaleKeys.contactSuccess:
-      'Your email app has opened with the message — just hit send.',
+      "Your email app should open with your message. If it didn't, email me at @email.",
+  LocaleKeys.contactSentTitle: "Message sent!",
+  LocaleKeys.contactSent:
+      "Thanks for reaching out — I'll get back to you soon.",
+  LocaleKeys.contactSendFailed:
+      "Your message couldn't be sent. Please try again, or email me at @email.",
   LocaleKeys.linkError: 'Could not open @url',
   LocaleKeys.errorTitle: 'Something went wrong',
 
