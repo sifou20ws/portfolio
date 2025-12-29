@@ -37,19 +37,19 @@ const Map<String, String> fr = {
       'Des interfaces au pixel près, une seule base de code pour tous les écrans.',
   LocaleKeys.skillCatNative: 'Intégration native',
   LocaleKeys.skillCatNativeDesc:
-      'Platform channels et modules natifs quand Flutter a besoin de renfort.',
+      "Code natif Android et iOS et fonctionnalités de l'appareil comme le NFC, les cartes et le scan de QR codes.",
   LocaleKeys.skillCatState: "Gestion d'état",
   LocaleKeys.skillCatStateDesc:
       'Un état prévisible et testable, avec une séparation claire des responsabilités.',
   LocaleKeys.skillCatBackend: 'API & backend',
   LocaleKeys.skillCatBackendDesc:
-      'REST, GraphQL, données temps réel et synchronisation hors ligne.',
+      "API REST et services Firebase, avec notifications push et authentification sécurisée par jeton.",
   LocaleKeys.skillCatTesting: 'Tests & qualité',
   LocaleKeys.skillCatTestingDesc:
-      "Tests unitaires, de widgets, golden et d'intégration pour détecter les régressions tôt.",
+      "Tests automatisés, analyse statique et suivi des plantages pour des applications stables.",
   LocaleKeys.skillCatCicd: 'CI/CD & DevOps',
   LocaleKeys.skillCatCicdDesc:
-      'Builds, signature et publication automatisés à chaque merge.',
+      "Builds et déploiements automatisés, et publication sur Google Play et l'App Store.",
 
   LocaleKeys.projectsEyebrow: 'Portfolio',
   LocaleKeys.projectsTitle: 'Projets phares',
@@ -99,7 +99,12 @@ const Map<String, String> fr = {
   LocaleKeys.errMessageShort: 'Veuillez écrire au moins @min caractères',
   LocaleKeys.contactSuccessTitle: 'Presque fini !',
   LocaleKeys.contactSuccess:
-      "Votre application e-mail s'est ouverte avec le message — il ne reste qu'à l'envoyer.",
+      "Votre application e-mail devrait s'ouvrir avec votre message. Sinon, écrivez-moi à @email.",
+  LocaleKeys.contactSentTitle: "Message envoyé !",
+  LocaleKeys.contactSent:
+      "Merci pour votre message — je vous réponds très vite.",
+  LocaleKeys.contactSendFailed:
+      "Votre message n'a pas pu être envoyé. Réessayez, ou écrivez-moi à @email.",
   LocaleKeys.linkError: "Impossible d'ouvrir @url",
   LocaleKeys.errorTitle: 'Une erreur est survenue',
 
