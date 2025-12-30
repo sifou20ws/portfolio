@@ -91,6 +91,9 @@ abstract final class LocaleKeys {
   static const errMessageShort = 'err_message_short';
   static const contactSuccessTitle = 'contact_success_title';
   static const contactSuccess = 'contact_success';
+  static const contactSentTitle = 'contact_sent_title';
+  static const contactSent = 'contact_sent';
+  static const contactSendFailed = 'contact_send_failed';
   static const linkError = 'link_error';
   static const errorTitle = 'error_title';
 
