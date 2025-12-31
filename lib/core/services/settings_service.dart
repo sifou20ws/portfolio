@@ -36,12 +36,6 @@ class SettingsService extends GetxService {
     return this;
   }
 
-  /// Flips between light and dark based on what is *currently visible*, so the
-  /// first tap always does something even when following the system theme.
-  void toggleTheme(Brightness current) {
-    setThemeMode(current == Brightness.dark ? ThemeMode.light : ThemeMode.dark);
-  }
-
   void setThemeMode(ThemeMode mode) {
     themeMode.value = mode;
     _box.write(_themeKey, mode.name);
