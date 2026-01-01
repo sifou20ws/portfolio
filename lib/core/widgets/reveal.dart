@@ -9,16 +9,27 @@ import '../theme/app_tokens.dart';
 /// scroll position and, after the next layout, checks whether its own render
 /// box has entered the bottom 90 % of the screen. Once revealed it stops
 /// listening.
+///
+/// Give it an [id] when a layout change can rebuild it in a new place (e.g. a
+/// grid switching from 3 to 2 columns): an item already revealed then shows
+/// up instantly instead of replaying its entrance.
 class Reveal extends StatefulWidget {
   const Reveal({
     super.key,
     required this.child,
     this.delay = Duration.zero,
     this.offset = 0.08,
+    this.id,
   });
 
   final Widget child;
   final Duration delay;
+
+  /// Stable identity used to remember that this item was already revealed.
+  final Object? id;
+
+  /// Ids revealed so far during this session.
+  static final Set<Object> _shown = {};
 
   /// Vertical slide distance, as a fraction of the child's height.
   final double offset;
@@ -31,6 +42,16 @@ class _RevealState extends State<Reveal> {
   ScrollPosition? _position;
   bool _visible = false;
   bool _checkScheduled = false;
+
+  /// Already revealed in an earlier life: show immediately, no animation.
+  late final bool _instant =
+      widget.id != null && Reveal._shown.contains(widget.id);
+
+  @override
+  void initState() {
+    super.initState();
+    if (_instant) _visible = true;
+  }
 
   @override
   void didChangeDependencies() {
@@ -64,6 +85,7 @@ class _RevealState extends State<Reveal> {
     final screenHeight = MediaQuery.sizeOf(context).height;
     if (top < screenHeight * 0.9) {
       setState(() => _visible = true);
+      if (widget.id != null) Reveal._shown.add(widget.id!);
       _position?.removeListener(_scheduleCheck);
     }
   }
@@ -77,7 +99,7 @@ class _RevealState extends State<Reveal> {
   @override
   Widget build(BuildContext context) {
     return widget.child
-        .animate(target: _visible ? 1 : 0)
+        .animate(target: _visible ? 1 : 0, value: _instant ? 1 : null)
         .fadeIn(
           duration: AppDurations.slow,
           delay: widget.delay,
