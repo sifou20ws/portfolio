@@ -21,6 +21,7 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Reveal(
+      id: 'section-header-$eyebrow',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
