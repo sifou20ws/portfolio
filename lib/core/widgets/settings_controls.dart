@@ -7,29 +7,59 @@ import '../services/settings_service.dart';
 import '../theme/app_tokens.dart';
 import '../utils/context_ext.dart';
 
-/// Sun/moon button that switches between light and dark with a rotation.
+/// Theme picker: Light / Dark / System. The icon shows the current mode
+/// (sun, moon, or "auto" when following the operating system).
 class ThemeToggleButton extends StatelessWidget {
   const ThemeToggleButton({super.key});
 
+  static const _options = [
+    (ThemeMode.light, Icons.light_mode_rounded, LocaleKeys.themeLight),
+    (ThemeMode.dark, Icons.dark_mode_rounded, LocaleKeys.themeDark),
+    (ThemeMode.system, Icons.brightness_auto_rounded, LocaleKeys.themeSystem),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final isDark = context.isDark;
-    return IconButton(
-      tooltip: LocaleKeys.toggleTheme.tr,
-      onPressed: () =>
-          SettingsService.to.toggleTheme(context.themeData.brightness),
-      icon: AnimatedSwitcher(
-        duration: AppDurations.medium,
-        transitionBuilder: (child, anim) => RotationTransition(
-          turns: Tween(begin: 0.6, end: 1.0).animate(anim),
-          child: FadeTransition(opacity: anim, child: child),
+    final settings = SettingsService.to;
+    return Obx(() {
+      final current = settings.themeMode.value;
+      final icon = _options.firstWhere((o) => o.$1 == current).$2;
+      return PopupMenuButton<ThemeMode>(
+        tooltip: LocaleKeys.toggleTheme.tr,
+        initialValue: current,
+        position: PopupMenuPosition.under,
+        shape: RoundedRectangleBorder(borderRadius: AppRadii.mdAll),
+        onSelected: settings.setThemeMode,
+        itemBuilder: (_) => [
+          for (final (mode, optionIcon, labelKey) in _options)
+            PopupMenuItem(
+              value: mode,
+              child: Row(
+                children: [
+                  Icon(optionIcon, size: 20),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text(labelKey.tr),
+                  const Spacer(),
+                  if (mode == current)
+                    Icon(
+                      Icons.check_rounded,
+                      size: 18,
+                      color: context.colors.primary,
+                    ),
+                ],
+              ),
+            ),
+        ],
+        icon: AnimatedSwitcher(
+          duration: AppDurations.medium,
+          transitionBuilder: (child, anim) => RotationTransition(
+            turns: Tween(begin: 0.6, end: 1.0).animate(anim),
+            child: FadeTransition(opacity: anim, child: child),
+          ),
+          child: Icon(icon, key: ValueKey(current)),
         ),
-        child: Icon(
-          isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-          key: ValueKey(isDark),
-        ),
-      ),
-    );
+      );
+    });
   }
 }
 
