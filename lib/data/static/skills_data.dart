@@ -22,7 +22,8 @@ class SkillCategory {
   final List<String> skills;
 }
 
-/// Edit this list to match your own toolbox.
+/// Built from the technologies used across the projects in
+/// `assets/data/projects.json`. Edit this list to match your own toolbox.
 const List<SkillCategory> skillCategories = [
   SkillCategory(
     titleKey: LocaleKeys.skillCatCrossPlatform,
@@ -33,10 +34,10 @@ const List<SkillCategory> skillCategories = [
       'Flutter',
       'Dart',
       'Material 3',
-      'Cupertino',
       'Responsive UI',
       'Animations',
       'Flutter Web',
+      'i18n & RTL',
     ],
   ),
   SkillCategory(
@@ -44,29 +45,14 @@ const List<SkillCategory> skillCategories = [
     descriptionKey: LocaleKeys.skillCatNativeDesc,
     icon: Icons.memory_rounded,
     color: Color(0xFFF76B1C),
-    skills: [
-      'Kotlin',
-      'Swift',
-      'Platform Channels',
-      'Pigeon',
-      'FFI',
-      'Jetpack Compose',
-      'SwiftUI',
-    ],
+    skills: ['Kotlin', 'Swift', 'NFC', 'QR code scanning', 'Google Maps'],
   ),
   SkillCategory(
     titleKey: LocaleKeys.skillCatState,
     descriptionKey: LocaleKeys.skillCatStateDesc,
     icon: Icons.account_tree_rounded,
     color: Color(0xFF8B5CF6),
-    skills: [
-      'GetX',
-      'BLoC / Cubit',
-      'Riverpod',
-      'Provider',
-      'Clean Architecture',
-      'MVVM',
-    ],
+    skills: ['GetX', 'BLoC', 'Clean Architecture', 'Feature-first modules'],
   ),
   SkillCategory(
     titleKey: LocaleKeys.skillCatBackend,
@@ -74,14 +60,13 @@ const List<SkillCategory> skillCategories = [
     icon: Icons.cloud_sync_rounded,
     color: Color(0xFF14B8A6),
     skills: [
-      'REST',
-      'GraphQL',
+      'REST APIs',
       'Dio',
       'Firebase',
-      'Supabase',
-      'WebSockets',
-      'Hive / Isar',
-      'SQLite',
+      'Cloud Firestore',
+      'Firebase Storage',
+      'FCM push notifications',
+      'Token-based auth',
     ],
   ),
   SkillCategory(
@@ -89,14 +74,7 @@ const List<SkillCategory> skillCategories = [
     descriptionKey: LocaleKeys.skillCatTestingDesc,
     icon: Icons.verified_rounded,
     color: Color(0xFF22C55E),
-    skills: [
-      'Unit tests',
-      'Widget tests',
-      'Golden tests',
-      'integration_test',
-      'Mocktail',
-      'Patrol',
-    ],
+    skills: ['Unit tests', 'Static analysis', 'Firebase Crashlytics'],
   ),
   SkillCategory(
     titleKey: LocaleKeys.skillCatCicd,
@@ -104,12 +82,11 @@ const List<SkillCategory> skillCategories = [
     icon: Icons.rocket_launch_rounded,
     color: Color(0xFFEC4899),
     skills: [
+      'Git',
       'GitHub Actions',
-      'Codemagic',
-      'Fastlane',
-      'Firebase App Distribution',
-      'Sentry',
-      'Crashlytics',
+      'GitHub Pages',
+      'Google Play Console',
+      'App Store Connect',
     ],
   ),
 ];
