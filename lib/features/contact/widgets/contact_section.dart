@@ -31,6 +31,7 @@ class ContactSection extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.xl),
         Reveal(
+          id: 'contact-find-me',
           delay: const Duration(milliseconds: 100),
           child: Text(
             LocaleKeys.contactFindMe.tr,
@@ -38,7 +39,11 @@ class ContactSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: AppSpacing.md),
-        const Reveal(delay: Duration(milliseconds: 150), child: _SocialLinks()),
+        const Reveal(
+          id: 'contact-links',
+          delay: Duration(milliseconds: 150),
+          child: _SocialLinks(),
+        ),
       ],
     );
 
@@ -54,6 +59,7 @@ class ContactSection extends StatelessWidget {
                   const SizedBox(width: AppSpacing.xxl),
                   const Expanded(
                     child: Reveal(
+                      id: 'contact-form',
                       delay: Duration(milliseconds: 150),
                       child: _ContactForm(),
                     ),
@@ -65,7 +71,7 @@ class ContactSection extends StatelessWidget {
                 children: [
                   info,
                   const SizedBox(height: AppSpacing.xl),
-                  const Reveal(child: _ContactForm()),
+                  const Reveal(id: 'contact-form', child: _ContactForm()),
                 ],
               ),
       ),
@@ -228,7 +234,9 @@ class _ContactForm extends GetView<ContactController> {
                   labelText: LocaleKeys.formName.tr,
                   prefixIcon: const Icon(Icons.person_outline_rounded),
                 ),
-                validator: Validators.required,
+                validator: Validators.minLength(
+                  ContactController.minNameLength,
+                ),
               ),
               const SizedBox(height: AppSpacing.md),
               TextFormField(
