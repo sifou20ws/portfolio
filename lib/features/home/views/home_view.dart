@@ -36,6 +36,8 @@ class HomeView extends GetView<HomeController> {
             children: [
               _section(HomeSection.home, const HeroSection()),
               _section(HomeSection.skills, const SkillsSection()),
+              // TODO(seif): add an Experience & Education timeline here
+              // (jobs and degrees are in web/cv/Seifeddine-Rezrazi-CV.pdf).
               _section(HomeSection.projects, const ProjectsSection()),
               _section(HomeSection.contact, const ContactSection()),
               const Footer(),
