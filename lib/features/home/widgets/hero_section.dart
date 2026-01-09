@@ -87,26 +87,7 @@ class _HeroText extends StatelessWidget {
         ),
       ),
       const SizedBox(height: AppSpacing.sm),
-      Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(text: '${LocaleKeys.heroTitle.tr} · '),
-            WidgetSpan(
-              alignment: PlaceholderAlignment.baseline,
-              baseline: TextBaseline.alphabetic,
-              child: ShaderMask(
-                blendMode: BlendMode.srcIn,
-                shaderCallback: context.palette.heroGradient.createShader,
-                child: Text(
-                  LocaleKeys.heroSubtitle.tr,
-                  style: context.text.headlineSmall,
-                ),
-              ),
-            ),
-          ],
-        ),
-        style: context.text.headlineSmall?.copyWith(color: muted),
-      ),
+      const _TitleLine(),
       const SizedBox(height: AppSpacing.lg),
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 580),
@@ -135,8 +116,10 @@ class _HeroText extends StatelessWidget {
             ),
         ],
       ),
-      const SizedBox(height: AppSpacing.xl),
-      const _Stats(),
+      if (AppConfig.stats.isNotEmpty) ...[
+        const SizedBox(height: AppSpacing.xl),
+        const _Stats(),
+      ],
     ];
 
     // Staggered entrance: each line fades & slides in 70 ms after the last.
@@ -146,6 +129,71 @@ class _HeroText extends StatelessWidget {
           .animate(interval: 70.ms)
           .fadeIn(duration: AppDurations.slow, curve: Curves.easeOut)
           .slideY(begin: 0.25, end: 0, curve: Curves.easeOutCubic),
+    );
+  }
+}
+
+/// "Cross-Platform Mobile Developer · Flutter Specialist".
+///
+/// Inline with a "·" separator when both parts fit on one line; otherwise
+/// stacked on two lines without the separator, so it never dangles at the
+/// start or end of a wrapped line (which happens with right-to-left text).
+class _TitleLine extends StatelessWidget {
+  const _TitleLine();
+
+  @override
+  Widget build(BuildContext context) {
+    final style = context.text.headlineSmall?.copyWith(
+      color: context.palette.mutedText,
+    );
+    final title = LocaleKeys.heroTitle.tr;
+    final subtitle = ShaderMask(
+      blendMode: BlendMode.srcIn,
+      shaderCallback: context.palette.heroGradient.createShader,
+      child: Text(
+        LocaleKeys.heroSubtitle.tr,
+        style: context.text.headlineSmall,
+      ),
+    );
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final painter = TextPainter(
+          text: TextSpan(
+            text: '$title · ${LocaleKeys.heroSubtitle.tr}',
+            style: style,
+          ),
+          textDirection: Directionality.of(context),
+          textScaler: MediaQuery.textScalerOf(context),
+          maxLines: 1,
+        )..layout(maxWidth: constraints.maxWidth);
+        final fits = !painter.didExceedMaxLines;
+        painter.dispose();
+
+        if (fits) {
+          return Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(text: '$title · '),
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.baseline,
+                  baseline: TextBaseline.alphabetic,
+                  child: subtitle,
+                ),
+              ],
+            ),
+            style: style,
+          );
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title, style: style),
+            const SizedBox(height: AppSpacing.xxs),
+            subtitle,
+          ],
+        );
+      },
     );
   }
 }
