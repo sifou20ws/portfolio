@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
+import '../../../core/config/app_config.dart';
 import '../../../core/i18n/locale_keys.dart';
 import '../../../core/responsive/responsive.dart';
 import '../../../core/theme/app_tokens.dart';
@@ -35,7 +36,13 @@ class ProjectDetailView extends GetView<ProjectDetailController> {
           case LoadStatus.error:
             return _NotFound(onBack: () => controller.back(context));
           case LoadStatus.success:
-            return _DetailBody(project: project!);
+            // Browser tab title for this project (a Title deeper in the tree
+            // wins over the app-level one on every rebuild).
+            return Title(
+              title: AppConfig.projectTitle(project!.title.text),
+              color: context.colors.primary,
+              child: _DetailBody(project: project),
+            );
         }
       }),
     );
@@ -300,7 +307,10 @@ class _WriteUp extends StatelessWidget {
             Icons.lightbulb_outline_rounded,
           ),
           const SizedBox(height: AppSpacing.sm),
-          Reveal(child: Text(project.problem.text, style: body)),
+          Reveal(
+            id: '${project.id}-problem',
+            child: Text(project.problem.text, style: body),
+          ),
           const SizedBox(height: AppSpacing.xl),
         ],
         if (!project.architecture.isEmpty) ...[
@@ -309,7 +319,10 @@ class _WriteUp extends StatelessWidget {
             Icons.account_tree_outlined,
           ),
           const SizedBox(height: AppSpacing.sm),
-          Reveal(child: Text(project.architecture.text, style: body)),
+          Reveal(
+            id: '${project.id}-architecture',
+            child: Text(project.architecture.text, style: body),
+          ),
           const SizedBox(height: AppSpacing.xl),
         ],
         if (project.features.isNotEmpty) ...[
@@ -320,6 +333,7 @@ class _WriteUp extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           for (var i = 0; i < project.features.length; i++)
             Reveal(
+              id: '${project.id}-feature-$i',
               delay: (i * 60).ms,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
@@ -364,6 +378,7 @@ class _TechStackPanel extends StatelessWidget {
     ].where((g) => g.$2.isNotEmpty);
 
     return Reveal(
+      id: '${project.id}-stack',
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
