@@ -60,6 +60,7 @@ class ProjectsSection extends GetView<ProjectsController> {
                     children: [
                       for (var i = 0; i < projects.length; i++)
                         Reveal(
+                          id: 'project-card-${projects[i].id}',
                           delay: (i % columns * 100).ms,
                           child: ProjectCard(
                             project: projects[i],
