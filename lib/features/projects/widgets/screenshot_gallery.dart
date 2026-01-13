@@ -162,6 +162,9 @@ class _ScreenshotGalleryState extends State<ScreenshotGallery> {
         initialIndex: initial,
         framed: _framed,
         builder: (i) => _shot(_items[i], i),
+        // Keep the carousel behind in step, so closing the viewer (Esc, the
+        // close button or a tap outside) lands on the same screenshot.
+        onPageChanged: (i) => _controller?.jumpToPage(i),
       ),
       barrierColor: Colors.black87,
       useSafeArea: false,
@@ -332,12 +335,14 @@ class _FullscreenViewer extends StatefulWidget {
     required this.initialIndex,
     required this.builder,
     this.framed = false,
+    this.onPageChanged,
   });
 
   final int count;
   final int initialIndex;
   final bool framed;
   final Widget Function(int index) builder;
+  final ValueChanged<int>? onPageChanged;
 
   @override
   State<_FullscreenViewer> createState() => _FullscreenViewerState();
@@ -387,7 +392,10 @@ class _FullscreenViewerState extends State<_FullscreenViewer> {
                 child: PageView.builder(
                   controller: _controller,
                   itemCount: widget.count,
-                  onPageChanged: (i) => setState(() => _index = i),
+                  onPageChanged: (i) {
+                    setState(() => _index = i);
+                    widget.onPageChanged?.call(i);
+                  },
                   itemBuilder: (_, i) => InteractiveViewer(
                     maxScale: 4,
                     child: Center(
