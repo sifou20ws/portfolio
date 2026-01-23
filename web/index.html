@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,21 +18,114 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Seifeddine Rezrazi — Cross-Platform Mobile Developer and Flutter Specialist. Portfolio of Flutter apps for Android, iOS and the web, with case studies and screenshots.">
+  <meta name="author" content="Seifeddine Rezrazi">
+  <meta name="theme-color" content="#0B0D17">
+
+  <!-- Link previews (LinkedIn, WhatsApp, Facebook, X/Twitter, Slack…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Seifeddine Rezrazi">
+  <meta property="og:title" content="Seifeddine Rezrazi · Flutter Developer">
+  <meta property="og:description" content="Cross-Platform Mobile Developer and Flutter Specialist. Case studies of Flutter apps for Android, iOS and the web.">
+  <meta property="og:url" content="https://sifou20ws.github.io/portfolio/">
+  <meta property="og:image" content="https://sifou20ws.github.io/portfolio/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Seifeddine Rezrazi, Flutter developer, with screenshots of his apps">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seifeddine Rezrazi · Flutter Developer">
+  <meta name="twitter:description" content="Cross-Platform Mobile Developer and Flutter Specialist. Case studies of Flutter apps for Android, iOS and the web.">
+  <meta name="twitter:image" content="https://sifou20ws.github.io/portfolio/og-image.jpg">
+  <link rel="canonical" href="https://sifou20ws.github.io/portfolio/">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="Seif Rezrazi">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>portfolio</title>
+  <title>Seifeddine Rezrazi · Flutter Developer</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Loading screen: painted instantly while Flutter downloads, removed on
+       the first Flutter frame. Colours match the app theme so there is no
+       white flash in dark mode. -->
+  <style>
+    html, body { margin: 0; height: 100%; background: #F7F8FC; }
+    @media (prefers-color-scheme: dark) { html, body { background: #0B0D17; } }
+    html.theme-dark, html.theme-dark body { background: #0B0D17; }
+    html.theme-light, html.theme-light body { background: #F7F8FC; }
+
+    #splash { position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 18px;
+      font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #5C6078; transition: opacity .35s ease; z-index: 10; }
+    @media (prefers-color-scheme: dark) { #splash { color: #A2A7C3; } }
+    html.theme-dark #splash { color: #A2A7C3; }
+    html.theme-light #splash { color: #5C6078; }
+    #splash.hide { opacity: 0; pointer-events: none; }
+    #splash .mark { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #5B5BF7, #14C8B4); color: #fff; font-weight: 800; font-size: 28px;
+      box-shadow: 0 12px 40px rgba(91, 91, 247, .35); animation: pulse 1.6s ease-in-out infinite; }
+    #splash .name { font-size: 15px; letter-spacing: .02em; }
+    #splash .bar { width: 140px; height: 3px; border-radius: 3px; overflow: hidden; background: rgba(127,127,160,.2); }
+    #splash .bar::after { content: ""; display: block; width: 40%; height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, #5B5BF7, #14C8B4); animation: slide 1.1s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.06); } }
+    @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { #splash .mark, #splash .bar::after { animation: none; } }
+  </style>
+  <script>
+    // Links shared before the switch to clean URLs used the hash form
+    // (…/portfolio/#/projects/x). Rewrite them before Flutter reads the URL.
+    (function () {
+      var h = window.location.hash;
+      if (h.indexOf('#/') === 0) {
+        var base = document.querySelector('base').getAttribute('href') || '/';
+        if (base.charAt(0) !== '/') base = '/';
+        history.replaceState(null, '', base + h.slice(2) + window.location.search);
+      }
+    })();
+
+    // The site is built without a service worker (--pwa-strategy=none) so a
+    // deploy is visible on the next visit. Remove the caching worker and
+    // caches that earlier versions installed for returning visitors.
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        regs.forEach(function (r) { r.unregister(); });
+      });
+    }
+    if (window.caches) {
+      caches.keys().then(function (keys) {
+        keys.filter(function (k) { return k.indexOf('flutter-') === 0; })
+            .forEach(function (k) { caches.delete(k); });
+      });
+    }
+
+    // Honour a theme the visitor picked earlier (saved by GetStorage).
+    try {
+      var saved = JSON.parse(localStorage.getItem('GetStorage') || '{}').theme_mode;
+      if (saved === 'dark' || saved === 'light') document.documentElement.classList.add('theme-' + saved);
+    } catch (e) {}
+  </script>
 </head>
 <body>
+  <div id="splash" aria-label="Loading">
+    <div class="mark">SR</div>
+    <div class="name">Seifeddine Rezrazi</div>
+    <div class="bar"></div>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('splash');
+      if (!el) return;
+      el.classList.add('hide');
+      setTimeout(function () { el.remove(); }, 400);
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
