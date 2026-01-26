@@ -25,9 +25,17 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
+      - run: flutter analyze
       - run: flutter test
-      # The site lives at /portfolio/, so the base href must match the repo name
-      - run: flutter build web --release --base-href "/portfolio/"
+      # The site lives at /portfolio/, so the base href must match the repo name.
+      # No service worker: visitors always get the latest deploy.
+      - run: flutter build web --release --base-href "/portfolio/" --pwa-strategy=none
+      # Retire the caching service worker older versions installed for returning
+      # visitors (see the file for details).
+      - run: cp tool/kill_switch_service_worker.js build/web/flutter_service_worker.js
+      # Clean URLs on a static host: a real page per project (with its own
+      # link preview) and a 404.html fallback. See the script for details.
+      - run: python3 tool/generate_route_pages.py build/web https://sifou20ws.github.io/portfolio/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
