@@ -4,8 +4,24 @@
     {
       "name": "portfolio-web",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "build/web"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765",
+        "--directory",
+        "build/web"
+      ],
       "port": 8765
+    },
+    {
+      "name": "portfolio-pages",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "tool/serve_like_pages.py",
+        "8766"
+      ],
+      "port": 8766,
+      "url": "http://localhost:8766"
     }
   ]
 }
