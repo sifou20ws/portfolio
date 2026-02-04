@@ -13,9 +13,18 @@ A cross-platform developer portfolio built with **Flutter + GetX**. It runs on A
 ```bash
 flutter pub get
 flutter run -d chrome        # or: -d macos, an emulator, a device…
-flutter test
-flutter build web --release  # output in build/web
+flutter analyze && flutter test
 ```
+
+To preview the web build exactly as GitHub Pages serves it (clean URLs, per-project pages, 404 fallback):
+
+```bash
+flutter build web --release --base-href /portfolio/ --pwa-strategy=none
+python3 tool/generate_route_pages.py build/web http://localhost:8766/portfolio/
+python3 tool/serve_like_pages.py 8766   # then open http://localhost:8766/portfolio/
+```
+
+Pushing to `main` runs `.github/workflows/deploy.yml`: analyze → test → build → post-build steps → deploy to GitHub Pages.
 
 ## Architecture (feature-first + GetX)
 
@@ -78,8 +87,19 @@ Each feature owns its `bindings/`, `controllers/`, `views/` and `widgets/` folde
 
 Add a `xx.dart` table next to `en.dart`, register it in `AppTranslations.keys` and `AppLocales.all`, and add its text to the JSON maps. `test/translations_test.dart` fails if any key is missing.
 
+## TODO
+
+Search the code for `TODO(seif)`:
+
+- [ ] **Formspree form ID** → `AppConfig.formspreeId` (`lib/core/config/app_config.dart`). Until then the contact form opens the visitor's email app.
+- [ ] **Hero stats** → real numbers in `AppConfig.stats`, then uncomment them (the row is hidden while empty).
+- [ ] **Profile photo** → `AppConfig.avatar` (square, at least 600×600).
+- [ ] **Experience & Education section** → between Skills and Projects in `lib/features/home/views/home_view.dart`.
+
 ## Production notes
 
-- **Contact form**: there is no backend. On submit, the form checks the fields and then opens the visitor's mail app with the message filled in. To send the message directly, replace the body of `ContactController.submit` with a call to your own endpoint, Formspree, EmailJS or a Firebase Function.
-- **Fonts**: `google_fonts` downloads the fonts at runtime. For offline use, or to avoid a font swap on first load, bundle the `.ttf` files and set `GoogleFonts.config.allowRuntimeFetching = false`.
-- **Web URLs**: the app uses hash URLs (`/#/projects/id`), which work on any static host. For clean URLs, call `usePathUrlStrategy()` from `flutter_web_plugins` and configure your host to rewrite every path to `index.html`.
+- **Contact form**: with `AppConfig.formspreeId` set, messages go straight to your inbox through [Formspree](https://formspree.io) (`lib/data/repositories/formspree_client.dart`). Without it, the visitor's email app opens with the message filled in and the form keeps its text.
+- **Fonts**: Plus Jakarta Sans and Cairo (weights 400–800) are bundled in `google_fonts/`, so nothing is downloaded at runtime. Add a file there if you start using another weight.
+- **Web URLs**: clean paths (`/portfolio/projects/<id>`). GitHub Pages is a static host, so `tool/generate_route_pages.py` writes a real page per project (with its own link-preview tags) plus a `404.html` fallback; old `#/…` links are rewritten in `web/index.html`.
+- **No service worker**: the site is built with `--pwa-strategy=none` so visitors always get the latest deploy; `tool/kill_switch_service_worker.js` retires the caching worker older versions installed.
+- **Link previews**: `web/og-image.jpg` (1200×630) and the Open Graph tags in `web/index.html`. Check them after a deploy with a tool such as the LinkedIn Post Inspector.
